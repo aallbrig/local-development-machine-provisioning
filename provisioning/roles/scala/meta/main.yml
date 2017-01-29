@@ -1,0 +1,10 @@
+---
+dependencies:
+  - role: geerlingguy.homebrew
+    homebrew_installed_packages:
+    - scala
+    - sbt
+    - maven
+    homebrew_cask_apps:
+    - java
+    - intellij-idea-ce

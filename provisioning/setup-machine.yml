@@ -1,5 +1,7 @@
 - name: a playbook to setup my local machine with my basic customizations
   hosts: dev-machine
+  roles:
+  - scala
   tasks:
   - name: Do something
     command: echo "blah"

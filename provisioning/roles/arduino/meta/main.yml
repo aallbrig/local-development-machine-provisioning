@@ -1,0 +1,10 @@
+---
+dependencies:
+- role: geerlingguy.homebrew
+  homebrew_installed_packages:
+  - gcc
+  homebrew_cask_apps:
+  - arduino
+  - gimp
+  - openscad
+  - makerbot-desktop

@@ -5,12 +5,12 @@ function setup_osx {
   pip --version
   if [[ $? != 0 ]] ; then
     echo "No valid pip installed.  Installing..."
-    sudo easy_install pip
+    easy_install pip
   fi
   ansible --version
   if [[ $? != 0 ]] ; then
     echo "No valid ansible installed.  Installing..."
-    sudo pip install ansible
+    pip install ansible
   fi
   ansible-galaxy install -r provisioning/requirements.yml
   if [[ $? != 0 ]] ; then

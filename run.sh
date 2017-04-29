@@ -6,16 +6,24 @@ function setup_osx {
   if [[ $? != 0 ]] ; then
     echo "No valid pip installed.  Installing..."
     easy_install pip
+    if [[ $? != 0 ]] ; then
+      echo "Sudoing easy_install pip"
+      sudo easy_install pip
+    fi
   fi
   ansible --version
   if [[ $? != 0 ]] ; then
     echo "No valid ansible installed.  Installing..."
     pip install ansible
+    if [[ $? != 0 ]] ; then
+      echo "Pip requires sudo?"
+      sudo pip install ansible
+    fi
   fi
   ansible-galaxy install -r provisioning/requirements.yml
   if [[ $? != 0 ]] ; then
-    echo "Try \`sudo ansible-galaxy install -r provisioning/requirements.yml\`"
-    exit 0
+    echo "Sudoing ansible-galaxy install -r provisioning/requirements.yml"
+    sudo ansible-galaxy install -r provisioning/requirements.yml
   fi
 
   # Primary ansible entrypoint

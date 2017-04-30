@@ -1,3 +1,4 @@
+---
 - name: Ensure/Setup macbook, if applicable
   hosts:
   - local-machine
@@ -11,7 +12,7 @@
   roles:
   - developer
 
-- name: Ensure/Setup Operation Applications
+- name: Ensure/Setup Operations Applications
   hosts:
   - local-machine
   roles:

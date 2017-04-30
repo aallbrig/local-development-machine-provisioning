@@ -1,4 +1,7 @@
 ---
 dependencies:
   - role: geerlingguy.homebrew
+    homebrew_cask_apps:
+    - google-chrome
+    - firefox
     when: ansible_distribution == 'MacOSX'

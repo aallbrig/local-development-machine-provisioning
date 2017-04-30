@@ -1,4 +1,6 @@
 ---
 dependencies:
   - role: geerlingguy.homebrew
+    homebrew_cask_apps:
+    - vagrant
     when: ansible_distribution == 'MacOSX'

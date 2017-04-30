@@ -21,6 +21,7 @@
   hosts:
   - local-machine
   roles:
+  - general
   - artist
   - arduino-hacker
   - 3d-print-hacker

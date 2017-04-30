@@ -1,4 +1,6 @@
 ---
 dependencies:
   - role: geerlingguy.homebrew
+    homebrew_cask_apps:
+    - visual-studio-code
     when: ansible_distribution == 'MacOSX'

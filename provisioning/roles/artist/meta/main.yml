@@ -1,4 +1,6 @@
 ---
 dependencies:
   - role: geerlingguy.homebrew
+    homebrew_cask_apps:
+    - adobe-creative-cloud
     when: ansible_distribution == 'MacOSX'

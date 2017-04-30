@@ -1,5 +1,0 @@
----
-homebrew_installed_packages:
-- gcc
-homebrew_cask_apps:
-- arduino

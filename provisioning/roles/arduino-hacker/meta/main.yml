@@ -8,3 +8,4 @@ dependencies:
   - gimp
   - openscad
   - makerbot-desktop
+  when: ansible_distribution == 'MacOSX'

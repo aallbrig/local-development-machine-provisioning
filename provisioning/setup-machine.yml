@@ -2,7 +2,8 @@
   hosts: dev-machine
   roles:
   - developer
+  - operations
   - artist
-  - arduino
+  - arduino-hacker
 #  - scala
   - 3dPrinting

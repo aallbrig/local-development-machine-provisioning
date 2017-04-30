@@ -1,6 +1,7 @@
 ---
 dependencies:
-  - role: geerlingguy.homebrew
+  - name: Operations Mac Dependencies
+    role: geerlingguy.homebrew
     homebrew_cask_apps:
-    - visual-studio-code
+    - vagrant
     when: ansible_distribution == 'MacOSX'

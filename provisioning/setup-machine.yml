@@ -5,5 +5,6 @@
   - operations
   - artist
   - arduino-hacker
-#  - scala
-  - 3dPrinting
+  - 3d-print-hacker
+  - role: macbook
+    when: ansible_distribution == 'MacOSX'

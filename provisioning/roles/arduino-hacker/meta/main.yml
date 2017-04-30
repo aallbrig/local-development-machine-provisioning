@@ -5,7 +5,4 @@ dependencies:
   - gcc
   homebrew_cask_apps:
   - arduino
-  - gimp
-  - openscad
-  - makerbot-desktop
   when: ansible_distribution == 'MacOSX'

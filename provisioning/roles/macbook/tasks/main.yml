@@ -11,4 +11,53 @@
     type: string
     value: "{{ ansible_env.HOME }}/Desktop/ScreenShots"
     state: present
-  register: screenshot_directory
+
+- name: Disable the “Are you sure you want to open this application?” dialog
+  osx_defaults:
+    domain: com.apple.LaunchServices
+    key: LSQuarantine
+    type: bool
+    value: false
+    state: present
+
+- name: Trackpad
+  block:
+  - name: Tap to click
+    osx_defaults:
+      domain: com.apple.driver.AppleBluetoothMultitouch.trackpad
+      key: Clicking
+      type: bool
+      value: true
+      state: present
+  
+  - name: Enable tap to click.
+    osx_defaults:
+      domain: NSGlobalDomain
+      key: com.apple.mouse.tapBehavior
+      type: int
+      value: 1
+    
+  - name: Enable tap to click for current host.
+    osx_defaults:
+      host: currentHost 
+      domain: NSGlobalDomain
+      key: com.apple.mouse.tapBehavior
+      type: int
+      value: 1
+  
+  - name: Tap with two fingers to emulate right click
+    osx_defaults:
+      domain: com.apple.driver.AppleBluetoothMultitouch.trackpad
+      key: TrackpadRightClick
+      type: bool
+      value: true
+      state: present
+
+  - name: Set scroll direction
+    osx_defaults:
+      domain: NSGlobalDomain
+      key: com.apple.swipescrolldirection
+      type: bool
+      value: false
+      state: present
+  

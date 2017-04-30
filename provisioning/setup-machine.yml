@@ -1,6 +1,8 @@
 - name: Playbook to setup local dev machine
   hosts: dev-machine
   roles:
+  - developer
+  - artist
   - arduino
-  - scala
+#  - scala
   - 3dPrinting

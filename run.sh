@@ -27,7 +27,12 @@ function setup_osx {
   fi
 
   # Primary ansible entrypoint
-  ansible-playbook provisioning/setup-machine.yml --ask-sudo-pass
+  ansible-playbook provisioning/setup-machine.yml
+  if [[ $? != 0 ]] ; then
+    echo "Sudoing ansible-playbook provisioning/setup-machine.yml --ask-sudo-pass"
+    ansible-playbook provisioning/setup-machine.yml --ask-sudo-pass
+  fi
+
   exit 0
 }
 

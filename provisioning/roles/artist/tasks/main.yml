@@ -1,0 +1,2 @@
+---
+- include: initiate-GUI-user-installs.yml

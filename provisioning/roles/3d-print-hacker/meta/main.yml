@@ -1,8 +1,4 @@
 ---
 dependencies:
 - role: geerlingguy.homebrew
-  homebrew_cask_apps:
-  - gimp
-  - openscad
-  - makerbot-desktop
   when: ansible_distribution == 'MacOSX'

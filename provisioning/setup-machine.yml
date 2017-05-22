@@ -1,28 +1,30 @@
 ---
-- name: Ensure/Setup macbook, if applicable
-  hosts:
-  - local-machine
-  roles:
-  - role: macbook
-    when: ansible_distribution == 'MacOSX'
+# - name: Ensure/Setup macbook, if applicable
+#   hosts:
+#   - local-machine
+#   roles:
+#   - role: macbook
+#     when: ansible_distribution == 'MacOSX'
 
 - name: Ensure/Setup Developer Applications
   hosts:
-  - local-machine
+  # - local-machine
+  - developer-machine
   roles:
   - developer
 
-- name: Ensure/Setup Operations Applications
-  hosts:
-  - local-machine
-  roles:
-  - operations
+# - name: Ensure/Setup Operations Applications
+#   hosts:
+#   - local-machine
+#   - developer-machine
+#   roles:
+#   - operations
 
 - name: Ensure/Setup General User Applications
   hosts:
   - local-machine
   roles:
-  - general
+  - general_user
   - artist
   - arduino-hacker
   - 3d-print-hacker

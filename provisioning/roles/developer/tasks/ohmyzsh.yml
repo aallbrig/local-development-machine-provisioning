@@ -1,0 +1,32 @@
+---
+- name: oh-my-zsh | Install oh-my-zsh Prereqs
+  apt: name={{ item }} state=latest update_cache=yes
+  with_items:
+   - git
+   - zsh
+   - git-core
+  become: True
+  when: ansible_distribution == 'Ubuntu'
+
+- name: oh-my-zsh | Determine if .oh-my-zsh exists
+  stat:
+    path: "{{ ansible_env.HOME }}/.oh-my-zsh"
+  register: oh_my_zsh_stat
+
+- name: oh-my-zsh | Clone down repository
+  git:
+    repo: https://github.com/robbyrussell/oh-my-zsh.git
+    dest: "{{ ansible_env.HOME }}/.oh-my-zsh"
+  when: oh_my_zsh_stat.stat.isdir is not defined
+
+- name: oh-my-zsh | Remove standard .zshrc
+  file: path="{{ ansible_env.HOME }}/.zshrc" state=absent
+
+- name: oh-my-zsh | Deploy new .zshrc
+  template:
+    src: zshrc.j2
+    dest: "{{ ansible_env.HOME }}/.zshrc"
+
+- name: oh-my-zsh | Set zsh as default shell
+  user: name={{ ansible_env.USER }} shell=/bin/zsh
+  become: True

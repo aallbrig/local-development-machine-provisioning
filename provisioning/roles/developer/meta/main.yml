@@ -1,5 +1,7 @@
 ---
 dependencies:
+  - role: node
+  - role: java
   - role: geerlingguy.homebrew
     homebrew_cask_apps:
     - visual-studio-code

@@ -4,4 +4,9 @@ dependencies:
     homebrew_cask_apps:
     - google-chrome
     - firefox
+    - private-internet-access
+    - lastpass
+    - firefox
+    - google-chrome
+    - keypad-layout  # https://github.com/janten/keypad-layout
     when: ansible_distribution == 'MacOSX'

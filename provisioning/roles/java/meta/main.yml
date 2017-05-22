@@ -1,8 +1,10 @@
 ---
 dependencies:
   - role: geerlingguy.homebrew
-    homebrew_installed_packages:
-    - maven
     homebrew_cask_apps:
     - java
+    when: ansible_distribution == 'MacOSX'
+  - role: geerlingguy.homebrew
+    homebrew_installed_packages:
+    - maven
     when: ansible_distribution == 'MacOSX'

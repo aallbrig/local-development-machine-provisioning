@@ -1,0 +1,35 @@
+---
+- name: nvm | Make .profile file, if not exist
+  file:
+    path: "{{ ansible_env.HOME }}/.profile"
+    state: touch
+
+- name: nvm |  Install nvm
+  sudo: yes
+  sudo_user: "{{ ansible_env.USER }}"
+  git: repo=https://github.com/creationix/nvm.git dest=~/.nvm version={{ nvm.version }}
+  tags: nvm
+
+- name: nvm | Export NVMDIR Env Var into .profile file
+  lineinfile:
+    path: "{{ ansible_env.HOME }}/.profile"
+    regexp: 'NVM_DIR='
+    line: 'export NVM_DIR="$HOME/.nvm"'
+
+- name: nvm | Install {{ nvm.node_version }}
+  shell: "source ~/.profile && nvm install {{ nvm.node_version }}"
+  register: nvm_install_result
+  changed_when: "'is already installed.' not in nvm_install_result.stdout"
+  tags: nvm
+
+- name: nvm | Check if {{ nvm.node_version }} is the default node version
+  shell: sudo -iu {{ ansible_env.USER }} nvm ls | grep -e 'default -> {{ nvm.node_version }}'
+  register: nvm_check_default
+  changed_when: False
+  ignore_errors: True
+  tags: nvm
+
+- name: nvm | Set default node version to {{ nvm.node_version }}
+  command: sudo -iu {{ ansible_env.USER }} nvm alias default {{ nvm.node_version }}
+  when: nvm_check_default|failed
+  tags: nvm

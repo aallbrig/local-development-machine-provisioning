@@ -1,30 +1,52 @@
 ---
-# - name: Ensure/Setup macbook, if applicable
-#   hosts:
-#   - local-machine
-#   roles:
-#   - role: macbook
-#     when: ansible_distribution == 'MacOSX'
-
-- name: Ensure/Setup Developer Applications
+- name: Ensure/Setup macbook, if applicable
   hosts:
-  # - local-machine
-  - developer-machine
-  roles:
-  - developer
+    - local-machine
+    - developer-machine
 
-# - name: Ensure/Setup Operations Applications
-#   hosts:
-#   - local-machine
-#   - developer-machine
-#   roles:
-#   - operations
+  vars_prompt:
+    - name: LAPTOP
+      prompt: Configure laptop (y/n)?
+      default: "n"
+    - name: DEVELOPER
+      prompt: Configure developer software (y/n)?
+      default: "n"
+    - name: OPERATIONS
+      prompt: Configure operations software (y/n)?
+      default: "n"
+    - name: GENERAL_USER
+      prompt: Configure general user software (y/n)?
+      default: "n"
+    - name: ARTIST
+      prompt: Configure artist software (y/n)?
+      default: "n"
+    - name: ARDUINO_HACKER
+      prompt: Configure arduino software (y/n)?
+      default: "n"
+    - name: THREED_PRINT_HACKER
+      prompt: Configure 3d related software (y/n)?
+      default: "n"
+    - name: SSH_PROFILES
+      prompt: Configure ssh profiles (y/n)?
+      default: "n"
 
-- name: Ensure/Setup General User Applications
-  hosts:
-  - local-machine
+
   roles:
-  - general_user
-  - artist
-  - arduino-hacker
-  - 3d-print-hacker
+    - role: macbook
+      when:
+        ansible_distribution == 'MacOSX'
+        and LAPTOP.lower() in ["y", "yes"]
+    - role: developer
+      when: DEVELOPER.lower() in ["y", "yes"]
+    - role: operations
+      when: OPERATIONS.lower() in ["y", "yes"]
+    - role: general-user
+      when: GENERAL_USER.lower() in ["y", "yes"]
+    - role: artist
+      when: ARTIST.lower() in ["y", "yes"]
+    - role: arduino-hacker
+      when: ARDUINO_HACKER.lower() in ["y", "yes"]
+    - role: 3d-print-hacker
+      when: THREED_PRINT_HACKER.lower() in ["y", "yes"]
+    - role: ssh-profiles
+      when: SSH_PROFILES.lower() in ["y", "yes"]

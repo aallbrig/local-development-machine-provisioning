@@ -1,0 +1,12 @@
+- name: Create SSH config file
+  file:
+    state: touch
+    path: "{{ item }}"
+  with_items:
+    - ~/.ssh/id_rsa
+    - ~/.ssh/id_rsa_work
+
+- name: Create SSH config file
+  template:
+    src: config.j2
+    dest: ~/.ssh/config

@@ -4,9 +4,9 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
   config.ssh.insert_key = false
 
   config.vm.box = "box-cutter/ubuntu1404-desktop"
-  # config.vm.synced_folder ".", "/vagrant", disabled: true
   config.vm.hostname = "developer-machine"
   config.vm.network "private_network", ip: "192.168.50.20"
+  # config.vm.synced_folder ".", "/vagrant", disabled: true
   config.vm.provider "virtualbox" do |vb|
     vb.gui = true
     vb.memory = 4096

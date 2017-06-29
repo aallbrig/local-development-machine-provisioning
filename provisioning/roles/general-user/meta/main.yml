@@ -9,4 +9,5 @@ dependencies:
     - firefox
     - google-chrome
     - keypad-layout  # https://github.com/janten/keypad-layout
+    - slack
     when: ansible_distribution == 'MacOSX'

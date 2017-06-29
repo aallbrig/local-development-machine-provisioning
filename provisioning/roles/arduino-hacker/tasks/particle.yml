@@ -1,0 +1,5 @@
+---
+- name: Install "particle-cli" node package globally.
+  npm:
+    name: particle-cli
+    global: yes

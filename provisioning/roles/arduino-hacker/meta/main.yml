@@ -6,4 +6,5 @@ dependencies:
   - dfu-util  # For Particle Photon connection
   homebrew_cask_apps:
   - arduino
+  - gcc-arm-embedded
   when: ansible_distribution == 'MacOSX'

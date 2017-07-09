@@ -10,4 +10,5 @@ dependencies:
     - google-chrome
     - keypad-layout  # https://github.com/janten/keypad-layout
     - slack
+    - libreoffice
     when: ansible_distribution == 'MacOSX'

@@ -11,4 +11,5 @@ dependencies:
     - keypad-layout  # https://github.com/janten/keypad-layout
     - slack
     - libreoffice
+    - kindle
     when: ansible_distribution == 'MacOSX'

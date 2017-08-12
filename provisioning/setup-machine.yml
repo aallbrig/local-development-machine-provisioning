@@ -14,6 +14,9 @@
     - name: OPERATIONS
       prompt: Configure operations software (y/n)?
       default: "n"
+    - name: CHAT_OPS
+      prompt: Configure chat ops software (y/n)?
+      default: "n"
     - name: GENERAL_USER
       prompt: Configure general user software (y/n)?
       default: "n"
@@ -40,6 +43,8 @@
       when: DEVELOPER.lower() in ["y", "yes"]
     - role: operations
       when: OPERATIONS.lower() in ["y", "yes"]
+    - role: chat-ops
+      when: CHAT_OPS.lower() in ["y", "yes"]
     - role: general-user
       when: GENERAL_USER.lower() in ["y", "yes"]
     - role: artist

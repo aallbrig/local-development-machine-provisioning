@@ -1,2 +1,3 @@
 ---
 - include: ohmyzsh.yml
+- include: nvm.yml

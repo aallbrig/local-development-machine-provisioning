@@ -9,6 +9,10 @@ function setup_osx {
     if [[ $? != 0 ]] ; then
       echo "Sudoing easy_install pip"
       sudo easy_install pip
+      if [[ $? != 0 ]] ; then
+        echo "Could not install pip.  Not sure why... See if google knows?"
+        exit 1
+      fi
     fi
   fi
   ansible --version
@@ -18,6 +22,10 @@ function setup_osx {
     if [[ $? != 0 ]] ; then
       echo "Pip requires sudo?"
       sudo pip install ansible
+      if [[ $? != 0 ]] ; then
+        echo "Could not install ansible.  Not sure why... See if google knows?"
+        exit 1
+      fi
     fi
   fi
   ansible-galaxy install -r provisioning/requirements.yml
@@ -26,12 +34,8 @@ function setup_osx {
     sudo ansible-galaxy install -r provisioning/requirements.yml
   fi
 
-  # Primary ansible entrypoint
-  ansible-playbook provisioning/setup-machine.yml
-  if [[ $? != 0 ]] ; then
-    echo "Sudoing ansible-playbook provisioning/setup-machine.yml --ask-sudo-pass"
-    ansible-playbook provisioning/setup-machine.yml --ask-sudo-pass
-  fi
+  # Homebrew requires sudo permissions
+  ansible-playbook provisioning/setup-machine.yml --ask-sudo-pass
 
   exit 0
 }

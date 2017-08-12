@@ -1,13 +1,9 @@
 ---
 dependencies:
-  - role: geerlingguy.homebrew
-    homebrew_installed_packages:
-    - nvm
-    when: ansible_distribution == 'MacOSX'
   - role: leonidas.nvm
     nvm:
       user: vagrant
-      version: "{{ nvm.version }}"
-      node_version: "{{ nvm.node_version }}"
+      version: "{{ config_nvm.VERSION }}"
+      node_version: "{{ config_nvm.NODE_VERSION }}"
     become: True
     when: ansible_distribution == 'Ubuntu'

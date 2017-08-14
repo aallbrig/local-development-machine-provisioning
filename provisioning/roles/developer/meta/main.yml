@@ -6,4 +6,5 @@ dependencies:
   - role: geerlingguy.homebrew
     homebrew_cask_apps:
     - visual-studio-code
+    - jetbrains-toolbox
     when: ansible_distribution == 'MacOSX'

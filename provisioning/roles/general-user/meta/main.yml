@@ -1,6 +1,8 @@
 ---
 dependencies:
   - role: geerlingguy.homebrew
+    homebrew_installed_packages:
+    - jq
     homebrew_cask_apps:
     - google-chrome
     - firefox

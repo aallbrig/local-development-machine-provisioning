@@ -1,6 +1,22 @@
 ### Local Development Machine Setup
 The goal with this repo is to be able to provision a new laptop or sync an existing laptop with the setup required to make any development simple.
 
+### Getting Started
+In a shell (or shell emulator) run `sh run.sh`.  You will be asked a series of questions, for example:
+
+```
+Configure laptop (y/n)? [n]: 
+Configure developer software (y/n)? [n]: 
+Configure operations software (y/n)? [n]: 
+Configure chat ops software (y/n)? [n]: 
+Configure general user software (y/n)? [n]: 
+Configure artist software (y/n)? [n]: 
+Configure arduino software (y/n)? [n]: 
+Configure 3d related software (y/n)? [n]: 
+```
+
+The default is "no", so press "enter" on the roles questions you wish to skip.
+
 ---
 
 ##### Tips & Tricks

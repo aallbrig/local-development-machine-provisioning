@@ -1,0 +1,6 @@
+---
+dependencies:
+  - role: geerlingguy.homebrew
+    homebrew_installed_packages:
+    - haskell-stack
+    when: ansible_distribution == 'MacOSX'

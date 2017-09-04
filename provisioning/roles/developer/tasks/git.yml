@@ -1,0 +1,14 @@
+---
+- name: Look up git email from local envvars
+  set_fact: git_email="{{ lookup('env','GIT_EMAIL') }}"
+
+- name: Debug GIT_EMAIL value
+  debug: msg="{{ git_email }}"
+
+- name: |
+    Copy over custom git configurations and customizations inside
+    ~/.gitconfig file
+  local_action: >
+    template
+    src=".gitconfig.j2"
+    dest="~/.gitconfig"

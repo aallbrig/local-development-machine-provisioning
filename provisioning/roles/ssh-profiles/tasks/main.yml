@@ -1,3 +1,7 @@
+---
+- name: Look up git email from local envvars
+  set_fact: git_email="{{ lookup('env','GIT_EMAIL') }}"
+
 - name: Create SSH config file
   file:
     state: touch
@@ -7,6 +11,6 @@
     - ~/.ssh/id_rsa_work
 
 - name: Create SSH config file
-  template:
-    src: config.j2
+  copy:
+    src: config
     dest: ~/.ssh/config

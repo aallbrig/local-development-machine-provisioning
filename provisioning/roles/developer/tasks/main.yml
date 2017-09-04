@@ -1,3 +1,4 @@
 ---
 - include: ohmyzsh.yml
 - include: nvm.yml
+- include: git.yml

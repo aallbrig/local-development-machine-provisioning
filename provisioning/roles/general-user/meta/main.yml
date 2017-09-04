@@ -1,11 +1,14 @@
 ---
 dependencies:
   - role: geerlingguy.homebrew
+    homebrew_taps:
+    - caskroom/versions  # for safari-technology-preview
     homebrew_installed_packages:
     - jq
     homebrew_cask_apps:
     - google-chrome
     - firefox
+    - safari-technology-preview
     - private-internet-access
     - lastpass
     - firefox

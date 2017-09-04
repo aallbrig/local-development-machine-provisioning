@@ -1,6 +1,8 @@
 ---
 dependencies:
   - role: geerlingguy.homebrew
+    homebrew_installed_packages:
+    - awscli
     homebrew_cask_apps:
     - virtualbox
     - virtualbox-extension-pack

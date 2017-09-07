@@ -1,0 +1,21 @@
+---
+# TODO: Set target repo and target dest to variables
+# TODO: Ensure vim repo exists as a check to run the
+# installation script or not
+# - name: Ensure "vimrc" repo exists locally
+#   git:
+#     repo: https://github.com/amix/vimrc.git
+#     dest: ~/.vim_runtime
+#     update: no
+#   register: already_cloned_check
+
+# - debug: msg="{{ already_cloned_check }}"
+
+- name: Clone "awesome" vim configuration from amix's vimrc repo
+  git:
+    repo: https://github.com/amix/vimrc.git
+    dest: ~/.vim_runtime
+    depth: 1
+
+- name: Execute installation script
+  shell: sh ~/.vim_runtime/install_awesome_vimrc.sh

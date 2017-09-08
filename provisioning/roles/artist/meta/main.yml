@@ -7,4 +7,5 @@ dependencies:
     homebrew_cask_apps:
     - adobe-creative-cloud
     - gimp
+    - gifcapture
     when: ansible_distribution == 'MacOSX'

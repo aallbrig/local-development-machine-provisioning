@@ -19,3 +19,9 @@
 
 - name: Execute installation script
   shell: sh ~/.vim_runtime/install_awesome_vimrc.sh
+
+- name: Apply customizations
+  copy:
+    src: my_configs.vim
+    dest: ~/.vim_runtime/my_configs.vim
+

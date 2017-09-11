@@ -22,16 +22,27 @@
 
 - name: Ensure plugin directory exists
   file:
-    path: ~/.vim/autoload
+    path: ~/.vim_runtime/sources_non_forked
     state: directory
-
-- name: Download a vim plugin manager
-  get_url:
-    url: https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
-    dest: ~/.vim/autoload/plug.vim
 
 - name: Apply customizations
   copy:
     src: my_configs.vim
     dest: ~/.vim_runtime/my_configs.vim
+
+# Plugin Installations
+- name: Plugins installed to specified pathogen plugin directory
+  git:
+    repo: "{{ item }}"
+    dest: "~/.vim_runtime/sources_non_forked/{{ item.split('/')[3] }}"
+  with_items:
+    - https://github.com/ekalinin/dockerfile.vim 
+    - https://github.com/leafgarland/typescript-vim
+    - https://github.com/chase/vim-ansible-yaml
+    - https://github.com/severin-lemaignan/vim-minimap
+    - https://github.com/dsawardekar/wordpress.vim
+    - https://github.com/tpope/vim-markdown
+    - https://github.com/janko-m/vim-test
+    - https://github.com/scrooloose/syntastic
+    - https://github.com/ervandew/supertab
 

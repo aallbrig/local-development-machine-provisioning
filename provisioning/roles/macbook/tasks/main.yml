@@ -4,6 +4,7 @@
     path: "{{ ansible_env.HOME }}/Desktop/ScreenShots"
     state: directory
 
+# Find more defaults here: https://github.com/mathiasbynens/dotfiles/blob/master/.macos
 - name: Update OSX defaults to use screenshots directory
   osx_defaults:
     domain: com.apple.screencapture

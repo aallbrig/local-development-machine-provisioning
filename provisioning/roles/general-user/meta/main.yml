@@ -5,6 +5,7 @@ dependencies:
     - caskroom/versions  # for safari-technology-preview
     homebrew_installed_packages:
     - jq
+    - ffmpeg
     homebrew_cask_apps:
     - google-chrome
     - firefox

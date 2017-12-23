@@ -1,4 +1,9 @@
 ---
+- name: Create screencaps directory
+  file:
+    path: "{{ ansible_env.HOME }}/Desktop/ScreenCaps"
+    state: directory
+
 - name: Create screenshot directory
   file:
     path: "{{ ansible_env.HOME }}/Desktop/ScreenShots"

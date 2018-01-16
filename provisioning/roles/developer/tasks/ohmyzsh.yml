@@ -23,8 +23,8 @@
   file: path="{{ ansible_env.HOME }}/.zshrc" state=absent
 
 - name: oh-my-zsh | Deploy new .zshrc
-  template:
-    src: zshrc.j2
+  copy:
+    src: .zshrc
     dest: "{{ ansible_env.HOME }}/.zshrc"
 
 - name: oh-my-zsh | Set zsh as default shell

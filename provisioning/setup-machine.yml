@@ -1,5 +1,5 @@
 ---
-- name: Ensure/Setup macbook, if applicable
+- name: Ensure/Setup laptop, if applicable
   hosts:
     - local-machine
     - developer-machine
@@ -9,7 +9,19 @@
       prompt: Configure laptop (y/n)?
       default: "n"
     - name: DEVELOPER
-      prompt: Configure developer software (y/n)?
+      prompt: Configure developer preferences (y/n)?
+      default: "n"
+    - name: NODE
+      prompt: Configure node (y/n)?
+      default: "n"
+    - name: JAVA
+      prompt: Configure java (y/n)?
+      default: "n"
+    - name: SCALA
+      prompt: Configure scala (y/n)?
+      default: "n"
+    - name: HASKELL
+      prompt: Configure haskell (y/n)?
       default: "n"
     - name: OPERATIONS
       prompt: Configure operations software (y/n)?
@@ -26,13 +38,12 @@
     - name: ARDUINO_HACKER
       prompt: Configure arduino software (y/n)?
       default: "n"
-    - name: THREED_PRINT_HACKER
+    - name: THREE_D_PRINT_HACKER
       prompt: Configure 3d related software (y/n)?
       default: "n"
     - name: SSH_PROFILES
       prompt: Configure ssh profiles (y/n)?
       default: "n"
-
 
   roles:
     - role: macbook
@@ -41,6 +52,14 @@
         and LAPTOP.lower() in ["y", "yes"]
     - role: developer
       when: DEVELOPER.lower() in ["y", "yes"]
+    - role: node
+      when: NODE.lower() in ["y", "yes"]
+    - role: java
+      when: JAVA.lower() in ["y", "yes"]
+    - role: scala
+      when: SCALA.lower() in ["y", "yes"]
+    - role: haskell
+      when: HASKELL.lower() in ["y", "yes"]
     - role: operations
       when: OPERATIONS.lower() in ["y", "yes"]
     - role: chat-ops
@@ -52,6 +71,6 @@
     - role: arduino-hacker
       when: ARDUINO_HACKER.lower() in ["y", "yes"]
     - role: 3d-print-hacker
-      when: THREED_PRINT_HACKER.lower() in ["y", "yes"]
+      when: THREE_D_PRINT_HACKER.lower() in ["y", "yes"]
     - role: ssh-profiles
       when: SSH_PROFILES.lower() in ["y", "yes"]

@@ -1,11 +1,11 @@
 ---
 dependencies:
-  - role: geerlingguy.homebrew
-    homebrew_installed_packages:
-    - youtube-dl
-    - imagemagick
-    homebrew_cask_apps:
-    - adobe-creative-cloud
-    - gimp
-    - gifcapture
-    when: ansible_distribution == 'MacOSX'
+- role: geerlingguy.homebrew
+  homebrew_installed_packages:
+  - youtube-dl
+  - imagemagick
+  homebrew_cask_apps:
+  - adobe-creative-cloud
+  - gimp
+  - gifcapture
+  when: ansible_distribution == 'MacOSX'

@@ -1,10 +1,10 @@
 ---
 dependencies:
-  - role: java
-  - role: geerlingguy.homebrew
-    homebrew_installed_packages:
-    - scala
-    - sbt
-    homebrew_cask_apps:
-    - intellij-idea-ce
-    when: ansible_distribution == 'MacOSX'
+- role: java
+- role: geerlingguy.homebrew
+  homebrew_installed_packages:
+  - scala
+  - sbt
+  homebrew_cask_apps:
+  - intellij-idea-ce
+  when: ansible_distribution == 'MacOSX'

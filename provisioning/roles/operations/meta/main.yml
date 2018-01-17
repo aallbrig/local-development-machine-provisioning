@@ -1,10 +1,10 @@
 ---
 dependencies:
-  - role: geerlingguy.homebrew
-    homebrew_installed_packages:
-    - awscli
-    homebrew_cask_apps:
-    - virtualbox
-    - virtualbox-extension-pack
-    - vagrant
-    when: ansible_distribution == 'MacOSX'
+- role: geerlingguy.homebrew
+  homebrew_installed_packages:
+  - awscli
+  homebrew_cask_apps:
+  - virtualbox
+  - virtualbox-extension-pack
+  - vagrant
+  when: ansible_distribution == 'MacOSX'

@@ -3,6 +3,5 @@ dependencies:
 - role: geerlingguy.homebrew
   homebrew_installed_packages: []
   homebrew_cask_apps:
-  - openscad
-  - makerbot-desktop
+  - vmware-horizon-client
   when: ansible_distribution == 'MacOSX'

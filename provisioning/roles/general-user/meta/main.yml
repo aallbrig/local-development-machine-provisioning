@@ -1,22 +1,22 @@
 ---
 dependencies:
-  - role: geerlingguy.homebrew
-    homebrew_taps:
-    - caskroom/versions  # for safari-technology-preview
-    homebrew_installed_packages:
-    - jq
-    - ffmpeg
-    homebrew_cask_apps:
-    - google-chrome
-    - firefox
-    - safari-technology-preview
-    - private-internet-access
-    - lastpass
-    - firefox
-    - google-chrome
-    - keypad-layout  # https://github.com/janten/keypad-layout
-    - slack
-    - libreoffice
-    - kindle
-    - grandperspective  # Hard drive visualization tool
-    when: ansible_distribution == 'MacOSX'
+- role: geerlingguy.homebrew
+  homebrew_taps:
+  - caskroom/versions  # for safari-technology-preview
+  homebrew_installed_packages:
+  - jq
+  - ffmpeg
+  homebrew_cask_apps:
+  - google-chrome
+  - firefox
+  - safari-technology-preview
+  - private-internet-access
+  - lastpass
+  - firefox
+  - google-chrome
+  - keypad-layout  # https://github.com/janten/keypad-layout
+  - slack
+  - libreoffice
+  - kindle
+  - grandperspective  # Hard drive visualization tool
+  when: ansible_distribution == 'MacOSX'

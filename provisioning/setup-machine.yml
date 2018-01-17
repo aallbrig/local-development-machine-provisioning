@@ -32,6 +32,9 @@
     - name: GENERAL_USER
       prompt: Configure general user software (y/n)?
       default: "n"
+    - name: SALESFORCE
+      prompt: Configure salesforce applications (y/n)?
+      default: "n"
     - name: ARTIST
       prompt: Configure artist software (y/n)?
       default: "n"
@@ -66,6 +69,8 @@
       when: CHAT_OPS.lower() in ["y", "yes"]
     - role: general-user
       when: GENERAL_USER.lower() in ["y", "yes"]
+    - role: salesforce
+      when: SALESFORCE.lower() in ["y", "yes"]
     - role: artist
       when: ARTIST.lower() in ["y", "yes"]
     - role: arduino-hacker

@@ -5,6 +5,5 @@ dependencies:
   homebrew_installed_packages:
   - scala
   - sbt
-  homebrew_cask_apps:
-  - intellij-idea-ce
+  homebrew_cask_apps: []
   when: ansible_distribution == 'MacOSX'

@@ -4,7 +4,6 @@ dependencies:
   homebrew_installed_packages: []
   homebrew_cask_apps:
   - java
-  - intellij-idea-ce
   when: ansible_distribution == 'MacOSX'
 - role: geerlingguy.homebrew
   homebrew_installed_packages:

@@ -8,6 +8,9 @@
     - name: LAPTOP
       prompt: Configure laptop (y/n)?
       default: "n"
+    - name: CORSAIR_KEYBOARD
+      prompt: Configure for a corsair keyboard (y/n)?
+      default: "n"
     - name: DEVELOPER
       prompt: Configure developer preferences (y/n)?
       default: "n"
@@ -53,6 +56,8 @@
       when:
         ansible_distribution == 'MacOSX'
         and LAPTOP.lower() in ["y", "yes"]
+    - role: corsair-keyboard
+      when: CORSAIR_KEYBOARD.lower() in ["y", "yes"]
     - role: developer
       when: DEVELOPER.lower() in ["y", "yes"]
     - role: node

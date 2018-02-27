@@ -19,4 +19,5 @@ dependencies:
   - libreoffice
   - kindle
   - grandperspective  # Hard drive visualization tool
+  - dropbox
   when: ansible_distribution == 'MacOSX'

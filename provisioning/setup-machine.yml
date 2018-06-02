@@ -29,6 +29,9 @@
     - name: OPERATIONS
       prompt: Configure operations software (y/n)?
       default: "n"
+    - name: QUALITY_ENGINEER
+      prompt: Configure quality engineer software (y/n)?
+      default: "n"
     - name: CHAT_OPS
       prompt: Configure chat ops software (y/n)?
       default: "n"
@@ -70,6 +73,8 @@
       when: HASKELL.lower() in ["y", "yes"]
     - role: operations
       when: OPERATIONS.lower() in ["y", "yes"]
+    - role: quality-engineer
+      when: QUALITY_ENGINEER.lower() in ["y", "yes"]
     - role: chat-ops
       when: CHAT_OPS.lower() in ["y", "yes"]
     - role: general-user

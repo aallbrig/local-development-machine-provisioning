@@ -7,4 +7,5 @@ dependencies:
   - virtualbox
   - virtualbox-extension-pack
   - vagrant
+  - microsoft-remote-desktop-beta
   when: ansible_distribution == 'MacOSX'

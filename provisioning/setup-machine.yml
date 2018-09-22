@@ -17,6 +17,9 @@
     - name: NODE
       prompt: Configure node (y/n)?
       default: "n"
+    - name: RUBY
+      prompt: Configure ruby (y/n)?
+      default: "n"
     - name: JAVA
       prompt: Configure java (y/n)?
       default: "n"
@@ -63,6 +66,8 @@
       when: CORSAIR_KEYBOARD.lower() in ["y", "yes"]
     - role: developer
       when: DEVELOPER.lower() in ["y", "yes"]
+    - role: ruby
+      when: RUBY.lower() in ["y", "yes"]
     - role: node
       when: NODE.lower() in ["y", "yes"]
     - role: java

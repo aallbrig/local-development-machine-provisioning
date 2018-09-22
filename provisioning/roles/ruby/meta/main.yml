@@ -1,0 +1,7 @@
+---
+dependencies:
+- role: geerlingguy.homebrew
+  homebrew_installed_packages:
+  - gpg
+  homebrew_cask_apps: []
+  when: ansible_distribution == 'MacOSX'

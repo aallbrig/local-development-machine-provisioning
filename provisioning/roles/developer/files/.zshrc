@@ -51,14 +51,12 @@ ZSH_THEME="robbyrussell"
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(git aws docker mvn npm redis-cli sbt scala vagrant)
+plugins=(git)
 
 source $ZSH/oh-my-zsh.sh
 
 # User configuration
 # export MANPATH="/usr/local/man:$MANPATH"
-
-export PATH=~/Library/Python/2.7/bin:$PATH
 
 # You may need to manually set your language environment
 # export LANG=en_US.UTF-8
@@ -93,6 +91,25 @@ alias gis="git status"
 alias gidc="git diff --cached"
 alias gip="git pull"
 
+alias k=kubectl
+alias watch=watch # allows "watch" to expand another alias (e.g. watch k get po --all-namespaces)
+
+# autocompletion
+source /usr/local/bin/aws_zsh_completer.sh
+source <(kubectl completion zsh)
+complete -F __start_kubectl k # get k8s autocompletion working with "k" alias
+
+# export PATH=~/Library/Python/2.7/bin:$PATH
+export PATH=/usr/local/bin:$PATH
+
 export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
 [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
+
+# Add RVM to PATH for scripting. Make sure this is the last PATH variable change.
+export PATH="$PATH:$HOME/.rvm/bin"
+
+# Add in Go Lang envvars
+export GOPATH="${HOME}/.go"
+export GOROOT="$(brew --prefix golang)/libexec"
+export PATH="$PATH:${GOPATH}/bin:${GOROOT}/bin"

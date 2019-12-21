@@ -1,40 +1,8 @@
 function setup_osx {
-  echo "osx"
+  echo "OSX detected!"
 
-  # Prerequisites
-  pip --version
-  if [[ $? != 0 ]] ; then
-    echo "No valid pip installed.  Installing..."
-    easy_install pip
-    if [[ $? != 0 ]] ; then
-      echo "Sudoing easy_install pip"
-      sudo easy_install pip
-      if [[ $? != 0 ]] ; then
-        echo "Could not install pip.  Not sure why... See if google knows?"
-        exit 1
-      fi
-    fi
-  fi
-  ansible --version
-  if [[ $? != 0 ]] ; then
-    echo "No valid ansible installed.  Installing..."
-    pip install ansible
-    if [[ $? != 0 ]] ; then
-      echo "Pip requires sudo?"
-      sudo pip install ansible
-      if [[ $? != 0 ]] ; then
-        echo "Could not install ansible.  Not sure why... See if google knows?"
-        exit 1
-      fi
-    fi
-  fi
-  ansible-galaxy install -r provisioning/requirements.yml
-  if [[ $? != 0 ]] ; then
-    echo "Sudoing ansible-galaxy install -r provisioning/requirements.yml"
-    sudo ansible-galaxy install -r provisioning/requirements.yml
-  fi
-
-  # Homebrew requires sudo permissions
+  # homebrew "meta" role requires sudo pass
+  # More info: https://github.com/geerlingguy/ansible-role-homebrew/issues/73
   ansible-playbook provisioning/setup-machine.yml --ask-sudo-pass
 
   exit 0

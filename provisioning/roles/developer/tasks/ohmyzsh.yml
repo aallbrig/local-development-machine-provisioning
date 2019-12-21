@@ -20,13 +20,18 @@
   when: oh_my_zsh_stat.stat.isdir is not defined
 
 - name: oh-my-zsh | Remove standard .zshrc
-  file: path="{{ ansible_env.HOME }}/.zshrc" state=absent
+  file:
+    path: "{{ ansible_env.HOME }}/.zshrc"
+    state: absent
 
-- name: oh-my-zsh | Deploy new .zshrc
-  copy:
-    src: .zshrc
+- name: oh-my-zsh | dotfiles | Symlink zshrc config
+  file:
+    src: "{{ role_path }}/files/.zshrc"
     dest: "{{ ansible_env.HOME }}/.zshrc"
+    state: link
 
 - name: oh-my-zsh | Set zsh as default shell
-  user: name={{ ansible_env.USER }} shell=/bin/zsh
+  user:
+    name: "{{ ansible_env.USER }}"
+    shell: /bin/zsh
   become: True

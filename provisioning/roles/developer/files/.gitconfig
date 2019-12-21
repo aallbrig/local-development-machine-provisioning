@@ -1,0 +1,6 @@
+[alias]
+    undo-localcommit = reset HEAD~1
+    cmt = commit -m
+    s = status
+    pu = pull
+    dc = diff --cached

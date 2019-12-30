@@ -65,6 +65,10 @@
       prompt: Configure arduino software (y/n)?
       private: no
       default: "n"
+    - name: RASPBERRY_PI_GEEK
+      prompt: Configure raspberry pi software (y/n)?
+      private: no
+      default: "n"
     - name: THREE_D_PRINT_HACKER
       prompt: Configure 3d related software (y/n)?
       private: no
@@ -107,6 +111,8 @@
       when: ARTIST.lower() in ["y", "yes"]
     - role: arduino-hacker
       when: ARDUINO_HACKER.lower() in ["y", "yes"]
+    - role: raspberry-pi-geek
+      when: RASPBERRY_PI_GEEK.lower() in ["y", "yes"]
     - role: 3d-print-hacker
       when: THREE_D_PRINT_HACKER.lower() in ["y", "yes"]
     - role: ssh-profiles

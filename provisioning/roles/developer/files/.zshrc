@@ -92,12 +92,14 @@ alias gidc="git diff --cached"
 alias gip="git pull"
 
 alias k=kubectl
-alias watch=watch # allows "watch" to expand another alias (e.g. watch k get po --all-namespaces)
+alias watch='watch ' # allows "watch" to expand another alias (e.g. watch k get po --all-namespaces)
 
 # autocompletion
 source /usr/local/bin/aws_zsh_completer.sh
 source <(kubectl completion zsh)
 complete -F __start_kubectl k # get k8s autocompletion working with "k" alias
+
+export KUBECONFIG=$HOME/pi-cluster-config:$HOME/.kube/config
 
 # export PATH=~/Library/Python/2.7/bin:$PATH
 export PATH=/usr/local/bin:$PATH

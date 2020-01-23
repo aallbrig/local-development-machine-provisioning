@@ -3,6 +3,7 @@ dependencies:
 - role: geerlingguy.homebrew
   homebrew_installed_packages:
   - tmux
+  - tree
   homebrew_cask_apps:
   - iterm2
   - visual-studio-code

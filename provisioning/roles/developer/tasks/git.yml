@@ -1,11 +1,25 @@
 ---
-- name: git | dotfiles | Remove nonstandard tmux config
+- name: git | dotfiles | Ensure untracked config file exists
+  file:
+    path: "{{ ansible_env.HOME   }}/.untracked-gitconfig"
+    state: touch
+    modification_time: preserve
+    access_time: preserve
+
+- name: git | dotfiles | Get "stat" of current git config
+  stat:
+    path: "{{ ansible_env.HOME  }}/.gitconfig"
+  register: stat_git_config
+
+- name: git | dotfiles | Remove nonstandard git config
   file:
     path: "{{ ansible_env.HOME }}/.gitconfig"
     state: absent
+  when: stat_git_config.stat.exists and not stat_git_config.stat.islnk
 
-- name: git | dotfiles | Symlink local repo's tmux config
+- name: git | dotfiles | Symlink local repo's git config
   file:
     src: "{{ role_path }}/files/.gitconfig"
     dest: "{{ ansible_env.HOME }}/.gitconfig"
     state: link
+

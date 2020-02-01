@@ -1,9 +1,0 @@
----
-dependencies:
-- role: leonidas.nvm
-  nvm:
-    user: vagrant
-    version: "{{ config_nvm.VERSION }}"
-    node_version: "{{ config_nvm.NODE_VERSION }}"
-  become: True
-  when: ansible_distribution == 'Ubuntu'

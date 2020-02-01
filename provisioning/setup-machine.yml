@@ -1,7 +1,7 @@
 ---
 - name: Ensure/Setup laptop, if applicable
   hosts:
-    - local-machine
+    - localhost
     - developer-machine
 
   vars_prompt:

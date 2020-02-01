@@ -56,6 +56,7 @@ plugins=(git)
 source $ZSH/oh-my-zsh.sh
 
 # User configuration
+[ -f $HOME/.untracked-shellrc  ] && . $HOME/.untracked-shellrc
 # export MANPATH="/usr/local/man:$MANPATH"
 
 # You may need to manually set your language environment

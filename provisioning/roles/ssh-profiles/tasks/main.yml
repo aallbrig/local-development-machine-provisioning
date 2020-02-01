@@ -6,6 +6,8 @@
   file:
     state: touch
     path: "{{ item }}"
+    modification_time: preserve
+    access_time: preserve
   with_items:
     - ~/.ssh/id_rsa
     - ~/.ssh/id_rsa_work

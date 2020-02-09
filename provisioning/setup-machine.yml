@@ -9,12 +9,20 @@
       prompt: Configure laptop (y/n)?
       private: no
       default: "n"
+    - name: GENERAL_USER
+      prompt: Configure general user software (y/n)?
+      private: no
+      default: "n"
     - name: CORSAIR_KEYBOARD
       prompt: Configure for a corsair keyboard (y/n)?
       private: no
       default: "n"
     - name: DEVELOPER
-      prompt: Configure developer preferences (y/n)?
+      prompt: Configure general developer preferences (y/n)?
+      private: no
+      default: "n"
+    - name: SSH_PROFILES
+      prompt: Configure ssh profiles (y/n)?
       private: no
       default: "n"
     - name: NODE
@@ -49,10 +57,6 @@
       prompt: Configure chat ops software (y/n)?
       private: no
       default: "n"
-    - name: GENERAL_USER
-      prompt: Configure general user software (y/n)?
-      private: no
-      default: "n"
     - name: SALESFORCE
       prompt: Configure salesforce applications (y/n)?
       private: no
@@ -71,10 +75,6 @@
       default: "n"
     - name: THREE_D_PRINT_HACKER
       prompt: Configure 3d related software (y/n)?
-      private: no
-      default: "n"
-    - name: SSH_PROFILES
-      prompt: Configure ssh profiles (y/n)?
       private: no
       default: "n"
 

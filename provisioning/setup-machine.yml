@@ -49,6 +49,14 @@
       prompt: Configure istio (y/n)?
       private: no
       default: "n"
+    - name: ARDUINO_HACKER
+      prompt: Configure arduino software (y/n)?
+      private: no
+      default: "n"
+    - name: RASPBERRY_PI_GEEK
+      prompt: Configure raspberry pi software (y/n)?
+      private: no
+      default: "n"
     - name: OPERATIONS
       prompt: Configure operations software (y/n)?
       private: no
@@ -67,14 +75,6 @@
       default: "n"
     - name: ARTIST
       prompt: Configure artist software (y/n)?
-      private: no
-      default: "n"
-    - name: ARDUINO_HACKER
-      prompt: Configure arduino software (y/n)?
-      private: no
-      default: "n"
-    - name: RASPBERRY_PI_GEEK
-      prompt: Configure raspberry pi software (y/n)?
       private: no
       default: "n"
     - name: THREE_D_PRINT_HACKER

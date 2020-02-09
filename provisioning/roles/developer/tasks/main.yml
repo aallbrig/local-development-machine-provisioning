@@ -3,3 +3,5 @@
 - include: tmux.yml
 - include: git.yml
 - include: vim.yml
+- include: ssh.yml
+

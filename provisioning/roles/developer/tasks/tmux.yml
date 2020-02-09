@@ -1,11 +1,11 @@
 ---
 - name: tmux | Remove nonstandard tmux config
   file:
-    path: "{{ ansible_env.HOME }}/.tmux.conf"
+    path: "~/.tmux.conf"
     state: absent
 
 - name: tmux | dotfiles | Symlink local repo's tmux config
   file:
     src: "{{ role_path }}/files/.tmux.conf"
-    dest: "{{ ansible_env.HOME }}/.tmux.conf"
+    dest: "~/.tmux.conf"
     state: link

@@ -1,12 +1,12 @@
 ---
 - name: Create screencaps directory
   file:
-    path: "{{ ansible_env.HOME }}/Desktop/ScreenCaps"
+    path: "~/Desktop/ScreenCaps"
     state: directory
 
 - name: Create screenshot directory
   file:
-    path: "{{ ansible_env.HOME }}/Desktop/ScreenShots"
+    path: "~/Desktop/ScreenShots"
     state: directory
 
 # Find more defaults here: https://github.com/mathiasbynens/dotfiles/blob/master/.macos
@@ -15,7 +15,7 @@
     domain: com.apple.screencapture
     key: location
     type: string
-    value: "{{ ansible_env.HOME }}/Desktop/ScreenShots"
+    value: "~/Desktop/ScreenShots"
     state: present
 
 - name: Disable the “Are you sure you want to open this application?” dialog

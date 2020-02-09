@@ -25,13 +25,13 @@
 
 - name: vim | dotfiles | Remove nonstandard vim customizations
   file:
-    path: "{{ ansible_env.HOME }}/.vim_runtime/my_configs.vim"
+    path: "~/.vim_runtime/my_configs.vim"
     state: absent
 
 - name: vim | dotfiles | Symlink vim customizations
   file:
     src: "{{ role_path }}/files/my_configs.vim"
-    dest: "{{ ansible_env.HOME }}/.vim_runtime/my_configs.vim"
+    dest: "~/.vim_runtime/my_configs.vim"
     state: link
 
 # Plugin Installations

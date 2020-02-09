@@ -73,7 +73,7 @@ source $ZSH/oh-my-zsh.sh
 # export ARCHFLAGS="-arch x86_64"
 
 # ssh
-export SSH_KEY_PATH="~/.ssh/rsa_id"
+export SSH_KEY_PATH=~/.ssh/rsa_id
 
 export CLICOLOR=1
 export LSCOLORS=GxFxCxDxBxegedabagaced

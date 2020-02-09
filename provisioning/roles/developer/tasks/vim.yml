@@ -25,20 +25,20 @@
 
 - name: vim | dotfiles | Remove nonstandard vim customizations
   file:
-    path: "~/.vim_runtime/my_configs.vim"
+    path: ~/.vim_runtime/my_configs.vim
     state: absent
 
 - name: vim | dotfiles | Symlink vim customizations
   file:
     src: "{{ role_path }}/files/my_configs.vim"
-    dest: "~/.vim_runtime/my_configs.vim"
+    dest: ~/.vim_runtime/my_configs.vim
     state: link
 
 # Plugin Installations
 - name: Plugins installed to specified pathogen plugin directory
   git:
     repo: "{{ item }}"
-    dest: "~/.vim_runtime/sources_non_forked/{{ item.split('/')[3] }}"
+    dest: ~/.vim_runtime/sources_non_forked/{{ item.split('/')[3] }}
   with_items:
     - https://github.com/ekalinin/dockerfile.vim
     - https://github.com/leafgarland/typescript-vim

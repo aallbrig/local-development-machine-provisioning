@@ -10,37 +10,37 @@
 
 - name: oh-my-zsh | Determine if .oh-my-zsh exists
   stat:
-    path: "~/.oh-my-zsh"
+    path: ~/.oh-my-zsh
   register: oh_my_zsh_stat
 
 - name: oh-my-zsh | Clone down repository
   git:
     repo: https://github.com/robbyrussell/oh-my-zsh.git
-    dest: "~/.oh-my-zsh"
+    dest: ~/.oh-my-zsh
   when: oh_my_zsh_stat.stat.isdir is not defined
 
 - name: oh-my-zsh | Ensure untracked configrc file exists
   file:
-    path: "~/.untracked-shellrc"
+    path: ~/.untracked-shellrc
     state: touch
     modification_time: preserve
     access_time: preserve
 
 - name: oh-my-zsh | Get "stat" of current zshrc
   stat:
-    path: "~/.zshrc"
+    path: ~/.zshrc
   register: stat_zshrc
 
 - name: oh-my-zsh | Remove standard .zshrc
   file:
-    path: "~/.zshrc"
+    path: ~/.zshrc
     state: absent
   when: stat_zshrc.stat.exists and not stat_zshrc.stat.islnk
 
 - name: oh-my-zsh | dotfiles | Symlink zshrc config
   file:
     src: "{{ role_path }}/files/.zshrc"
-    dest: "~/.zshrc"
+    dest: ~/.zshrc
     state: link
 
 - name: oh-my-zsh | Set zsh as default shell

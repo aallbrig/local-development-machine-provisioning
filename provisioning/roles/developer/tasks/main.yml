@@ -1,7 +1,7 @@
 ---
 - include: ohmyzsh.yml
+- include: ssh.yml
 - include: tmux.yml
 - include: git.yml
 - include: vim.yml
-- include: ssh.yml
 

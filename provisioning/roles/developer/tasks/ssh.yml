@@ -1,0 +1,23 @@
+---
+# TODO: Generate ssh files when on a fresh machine
+# - name: ssh | Create SSH config file
+#   file:
+#     state: touch
+#     path: "{{ item }}"
+#     modification_time: preserve
+#     access_time: preserve
+#   with_items:
+#     - ~/.ssh/id_rsa
+#     - ~/.ssh/id_rsa_work
+
+- name: ssh | config | Remove preexisting config
+  file:
+    path: ~/.ssh/config
+    state: absent
+
+- name: ssh | config | Symlink new .ssh/config
+  file:
+    src: "{{ role_path  }}/files/ssh-config"
+    dest: ~/.ssh/config
+    state: link
+

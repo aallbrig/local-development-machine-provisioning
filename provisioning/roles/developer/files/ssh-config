@@ -1,11 +1,12 @@
-# Default GitHub
+# Personal GitHub Identity Reference
 Host github.com
     HostName github.com
     PreferredAuthentications publickey
     IdentityFile ~/.ssh/id_rsa
 
-# Work GitHub
+# General Purpose Work GitHub Identity Reference
 Host github.com
     HostName github.com
     PreferredAuthentications publickey
     IdentityFile ~/.ssh/id_rsa_work
+

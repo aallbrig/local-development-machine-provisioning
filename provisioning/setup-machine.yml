@@ -21,10 +21,6 @@
       prompt: Configure general developer preferences (y/n)?
       private: no
       default: "n"
-    - name: SSH_PROFILES
-      prompt: Configure ssh profiles (y/n)?
-      private: no
-      default: "n"
     - name: NODE
       prompt: Configure node (y/n)?
       private: no
@@ -127,5 +123,4 @@
       when: RASPBERRY_PI_GEEK.lower() in ["y", "yes"]
     - role: 3d-print-hacker
       when: THREE_D_PRINT_HACKER.lower() in ["y", "yes"]
-    - role: ssh-profiles
-      when: SSH_PROFILES.lower() in ["y", "yes"]
+

@@ -1,0 +1,6 @@
+---
+dependencies:
+- role: geerlingguy.homebrew
+  homebrew_installed_packages:
+  - istioctl
+  when: ansible_distribution == 'MacOSX'

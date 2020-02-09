@@ -9,8 +9,6 @@
 #     update: no
 #   register: already_cloned_check
 
-# - debug: msg="{{ already_cloned_check }}"
-
 - name: vim | Clone "awesome" vim configuration from amix's vimrc repo
   git:
     repo: https://github.com/amix/vimrc.git

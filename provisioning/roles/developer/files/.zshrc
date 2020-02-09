@@ -94,6 +94,7 @@ alias gip="git pull"
 
 alias k=kubectl
 alias watch='watch ' # allows "watch" to expand another alias (e.g. watch k get po --all-namespaces)
+alias tree='tree -S'
 
 # autocompletion
 source /usr/local/bin/aws_zsh_completer.sh

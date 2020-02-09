@@ -45,6 +45,10 @@
       prompt: Configure haskell (y/n)?
       private: no
       default: "n"
+    - name: KUBERNETES
+      prompt: Configure kubernetes (y/n)?
+      private: no
+      default: "n"
     - name: OPERATIONS
       prompt: Configure operations software (y/n)?
       private: no
@@ -97,6 +101,8 @@
       when: SCALA.lower() in ["y", "yes"]
     - role: haskell
       when: HASKELL.lower() in ["y", "yes"]
+    - role: kubernetes-engineer
+      when: KUBERNETES.lower() in ["y", "yes"]
     - role: operations
       when: OPERATIONS.lower() in ["y", "yes"]
     - role: quality-engineer

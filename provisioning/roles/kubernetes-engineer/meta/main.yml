@@ -1,0 +1,8 @@
+---
+dependencies:
+- role: geerlingguy.homebrew
+  homebrew_installed_packages:
+  - kind
+  - minikube
+  - operator-sdk
+  when: ansible_distribution == 'MacOSX'

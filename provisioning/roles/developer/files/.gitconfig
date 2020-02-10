@@ -1,9 +1,11 @@
 [include]
     path = .untracked-gitconfig
+
 [alias]
     undo-localcommit = reset HEAD~1
     cmt = commit -m
     s = status
+    aa = add .
     pu = pull
     dc = diff --cached
 

@@ -2,10 +2,12 @@
     path = .untracked-gitconfig
 
 [alias]
-    undo-localcommit = reset HEAD~1
-    cmt = commit -m
+    aliases = !git config --get-regexp ^alias\\. | sed -e s/^alias.// -e s/\\ /\\ $(printf \"\\043\")--\\>\\ / | column -t -s $(printf \"\\043\") | sort -k 1
     s = status
+    p = pull
     aa = add .
-    pu = pull
+    r = reset
+    cmt = commit -m
     dc = diff --cached
+    undo-localcommit = reset HEAD~1
 

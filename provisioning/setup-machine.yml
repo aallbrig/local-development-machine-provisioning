@@ -5,80 +5,84 @@
     - developer-machine
 
   vars_prompt:
-    - name: LAPTOP
-      prompt: Configure laptop (y/n)?
-      private: no
-      default: "n"
     - name: GENERAL_USER
-      prompt: Configure general user software (y/n)?
+      prompt: Setup general user software (y/n)?
       private: no
       default: "n"
     - name: CORSAIR_KEYBOARD
-      prompt: Configure for a corsair keyboard (y/n)?
+      prompt: Setup Corsair software (y/n)?
+      private: no
+      default: "n"
+    - name: LAPTOP
+      prompt: Setup laptop preferences (y/n)?
       private: no
       default: "n"
     - name: DEVELOPER
-      prompt: Configure general developer preferences (y/n)?
+      prompt: Setup general developer preferences (y/n)?
       private: no
       default: "n"
     - name: NODE
-      prompt: Configure node (y/n)?
+      prompt: Setup node (y/n)?
       private: no
       default: "n"
     - name: RUBY
-      prompt: Configure ruby (y/n)?
+      prompt: Setup ruby (y/n)?
       private: no
       default: "n"
     - name: JAVA
-      prompt: Configure java (y/n)?
+      prompt: Setup java (y/n)?
       private: no
       default: "n"
     - name: SCALA
-      prompt: Configure scala (y/n)?
+      prompt: Setup scala (y/n)?
       private: no
       default: "n"
     - name: HASKELL
-      prompt: Configure haskell (y/n)?
-      private: no
-      default: "n"
-    - name: KUBERNETES
-      prompt: Configure kubernetes (y/n)?
-      private: no
-      default: "n"
-    - name: ISTIO
-      prompt: Configure istio (y/n)?
-      private: no
-      default: "n"
-    - name: ARDUINO_HACKER
-      prompt: Configure arduino software (y/n)?
-      private: no
-      default: "n"
-    - name: RASPBERRY_PI_GEEK
-      prompt: Configure raspberry pi software (y/n)?
+      prompt: Setup haskell (y/n)?
       private: no
       default: "n"
     - name: OPERATIONS
-      prompt: Configure operations software (y/n)?
+      prompt: Setup operations software (y/n)?
+      private: no
+      default: "n"
+    - name: NETWORK_ENGINEER
+      prompt: Setup network engineer tools (y/n)?
+      private: no
+      default: "n"
+    - name: KUBERNETES
+      prompt: Setup kubernetes (y/n)?
+      private: no
+      default: "n"
+    - name: ISTIO
+      prompt: Setup istio (y/n)?
+      private: no
+      default: "n"
+    - name: ARDUINO_HACKER
+      prompt: Setup arduino software (y/n)?
+      private: no
+      default: "n"
+    - name: RASPBERRY_PI_GEEK
+      prompt: Setup raspberry pi software (y/n)?
       private: no
       default: "n"
     - name: QUALITY_ENGINEER
-      prompt: Configure quality engineer software (y/n)?
+      prompt: Setup quality engineer software (y/n)?
       private: no
       default: "n"
     - name: CHAT_OPS
-      prompt: Configure chat ops software (y/n)?
+      prompt: Setup chat ops software (y/n)?
       private: no
       default: "n"
-    - name: SALESFORCE
-      prompt: Configure salesforce applications (y/n)?
+    - name: WORK
+      prompt: Setup work applications (y/n)?
       private: no
       default: "n"
     - name: ARTIST
-      prompt: Configure artist software (y/n)?
+      prompt: Setup artist software (y/n)?
       private: no
       default: "n"
     - name: THREE_D_PRINT_HACKER
-      prompt: Configure 3d related software (y/n)?
+      prompt: Setup 3d related software (y/n)?
       private: no
       default: "n"
 
@@ -113,8 +117,9 @@
       when: CHAT_OPS.lower() in ["y", "yes"]
     - role: general-user
       when: GENERAL_USER.lower() in ["y", "yes"]
+    # Update what role "role: " points to, if applicable
     - role: salesforce
-      when: SALESFORCE.lower() in ["y", "yes"]
+      when: WORK.lower() in ["y", "yes"]
     - role: artist
       when: ARTIST.lower() in ["y", "yes"]
     - role: arduino-hacker
@@ -123,4 +128,7 @@
       when: RASPBERRY_PI_GEEK.lower() in ["y", "yes"]
     - role: 3d-print-hacker
       when: THREE_D_PRINT_HACKER.lower() in ["y", "yes"]
+    - role: network-engineer
+      when: NETWORK_ENGINEER.lower() in ["y", "yes"]
+
 

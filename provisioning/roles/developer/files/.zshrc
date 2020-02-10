@@ -86,12 +86,6 @@ export LSCOLORS=GxFxCxDxBxegedabagaced
 # Example aliases
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
-alias giaa="git add -A :/"
-alias gid="git diff"
-alias gis="git status"
-alias gidc="git diff --cached"
-alias gip="git pull"
-
 alias k=kubectl
 alias watch='watch ' # allows "watch" to expand another alias (e.g. watch k get po --all-namespaces)
 alias tree='tree -S'

@@ -1,14 +1,15 @@
 [include]
-    path = .untracked-gitconfig
+  path = .untracked-gitconfig
 
 [alias]
-    aliases = !git config --get-regexp ^alias\\. | sed -e s/^alias.// -e s/\\ /\\ $(printf \"\\043\")\\ / | column -t -s $(printf \"\\043\") | sort -k 1
-    s = status
-    p = pull
-    aa = add .
-    r = reset
-    cmt = commit -m
-    dc = diff --cached
-    undo-localcommit = reset HEAD~1
-    push-new-branch = !git push -u origin $(git rev-parse --abbrev-ref HEAD)
+  aliases = !git config --get-regexp ^alias\\. | sed -e s/^alias.// -e s/\\ /\\ $(printf \"\\043\")\\ / | column -t -s $(printf \"\\043\") | sort -k 1
+  s = status
+  p = pull
+  aa = add .
+  r = reset
+  cmt = commit -m
+  dc = diff --cached
+  undo-localcommit = reset HEAD~1
+  push-new-branch = !git push -u origin $(git rev-parse --abbrev-ref HEAD)
+  pr = !git push-new-branch && hub pull-request
 

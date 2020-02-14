@@ -10,4 +10,5 @@
     cmt = commit -m
     dc = diff --cached
     undo-localcommit = reset HEAD~1
+    push-new-branch = !git push -u origin $(git rev-parse --abbrev-ref HEAD)
 

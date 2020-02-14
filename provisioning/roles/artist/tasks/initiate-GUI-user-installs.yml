@@ -1,5 +1,5 @@
 ---
-- stat: 
+- stat:
     path: "/Applications/Adobe\ Creative\ Cloud/Adobe\ Creative\ Cloud"
   register: adobe_creative_cloud_app
   become: True
@@ -8,7 +8,7 @@
   local_action: command open -a /usr/local/Caskroom/adobe-creative-cloud/latest/Creative\ Cloud\ Installer.app
   when: adobe_creative_cloud_app.stat.exists == False
 
-- stat: 
+- stat:
     path: "/Applications/Utilities/Adobe\ Creative\ Cloud/ACC/Creative\ Cloud.app"
   register: adobe_creative_cloud_app
   become: True
@@ -17,3 +17,4 @@
   wait_for:
     path: "/Applications/Utilities/Adobe\ Creative\ Cloud/ACC/Creative\ Cloud.app"
     state: present
+

@@ -1,9 +1,0 @@
----
-dependencies:
-- role: java
-- role: geerlingguy.homebrew
-  homebrew_installed_packages:
-  - scala
-  - sbt
-  homebrew_cask_apps: []
-  when: ansible_distribution == 'MacOSX'

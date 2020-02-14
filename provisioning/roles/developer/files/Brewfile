@@ -1,0 +1,83 @@
+# general
+cask "private-internet-access"
+cask "lastpass"
+cask "dropbox"
+# Hard drive visualization tool
+cask "grandperspective"
+# https://github.com/janten/keypad-layout
+cask "keypad-layout"
+cask "firefox"
+cask "google-chrome"
+brew "gpg"
+
+# peripherals
+cask "homebrew/cask-drivers/corsair-icue"
+
+# developer
+cask "iterm2"
+brew "tmux"
+brew "tree"
+brew "coreutils"
+brew "jq"
+
+# language runtimes
+cask "java"
+brew "haskell-stack"
+brew "scala"
+brew "sbt"
+brew "go"
+
+# VCS junkie
+brew "git
+brew "hub"
+
+# IDEs/editors
+cask "jetbrains-toolbox"
+cask "visual-studio-code"
+
+# OS
+cask "virtualbox"
+cask "virtualbox-extension-pack"
+cask "vagrant"
+
+# Remote
+cask "microsoft-remote-desktop-beta"
+cask "vmware-horizon-client"
+
+# cloud native engineering
+brew "istioctl"
+brew "kind"
+brew "minikube"
+brew "operator-sdk"
+
+# cloud admin
+brew "awscli"
+
+# network engineering
+brew "nmap"
+
+# testing
+cask "postman"
+
+# hardware hacking (e.g. arduino)
+cask "arduino"
+brew "gcc"
+cask "gcc-arm-embedded"
+brew "dfu-util"
+# GUI to write OS images to SD cards
+cask "balenaetcher"
+cask "makerbot-desktop"
+
+# artist
+cask "adobe-creative-cloud"
+cask "openscad"
+brew "youtube-dl"
+brew "imagemagick"
+cask "gimp"
+cask "gifcapture"
+brew "ffmpeg"
+
+# chat ops
+cask "discord"
+cask "slack"
+

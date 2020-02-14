@@ -1,0 +1,12 @@
+---
+- name: Stat brewfile file
+  stat:
+    path: ~/Brewfile
+  register: brewfile
+
+- name: Symlink brewfile
+  file:
+    src: "{{ role_path }}/files/Brewfile"
+    dest: ~/Brewfile
+    state: link
+  when: not brewfile.stat.exists or not brewfile.stat.islnk

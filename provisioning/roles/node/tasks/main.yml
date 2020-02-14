@@ -1,4 +1,10 @@
 ---
+- name: Detect nvm directory
+  stat:
+    path: ~/.nvm
+  register: nvm
+
 - name: nvm | Download nvm
   shell: curl -o- https://raw.githubusercontent.com/creationix/nvm/v0.33.2/install.sh | bash
-# TODO: Update "changed when" statement
+  when: not nvm.stat.exists
+

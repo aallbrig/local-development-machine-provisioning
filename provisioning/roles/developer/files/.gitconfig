@@ -20,10 +20,11 @@
   merge-and-delete = !git merge-branch && git full-delete-current-branch
   merge-branch = "! \
     current_branch=$(git branch-name); \
+    echo \"${current_branch}\"; \
     if [ \"${current_branch}\" != 'master' ]; then \
       echo 'Merging branch with master'; \
       git checkout master; \
-      git merge --squash \"${current_branch}\"; \
+      git merge \"${current_branch}\"; \
       git push; \
       git checkout \"${current_branch}\"; \
     else \

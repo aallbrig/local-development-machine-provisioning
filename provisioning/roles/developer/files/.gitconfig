@@ -24,6 +24,7 @@
       echo 'Merging branch with master'; \
       git checkout master; \
       git merge \"${current_branch}\"; \
+      git push; \
       git checkout \"${current_branch}\"; \
     else \
       echo 'Not running this command on master'; \

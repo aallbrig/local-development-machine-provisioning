@@ -1,5 +1,7 @@
-### Local Development Machine Setup
-The goal with this repo is to be able to provision a new laptop or sync an existing laptop with the setup required to make any development simple.
+### Andrew Allbright setup scripts
+This repo represents my setup scripts so I can quickly configure my workstation with my own preferences.
+
+These scripts were written in `Ansible`.
 
 ### Installation
 ```bash

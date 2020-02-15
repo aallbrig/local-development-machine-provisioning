@@ -3,15 +3,30 @@
 
 [alias]
   aliases = !git config --get-regexp ^alias\\. | sed -e s/^alias.// -e s/\\ /\\ $(printf \"\\043\")\\ / | column -t -s $(printf \"\\043\") | sort -k 1
+  browse = !hub browse
   s = status
+  a = add
   p = pull
   aa = add .
   r = reset
   cmt = commit -m
   d = diff
   dc = diff --cached
+  new-branch = checkout -b
   undo-localcommit = reset HEAD~1
   branch-name = rev-parse --abbrev-ref HEAD
   push-new-branch = !git push -u origin $(git branch-name)
   pr = !git push-new-branch && hub pull-request
+  full-delete-current-branch = "! \
+    current_branch=$(git branch-name); \
+    echo $current_branch; \
+    if [ $current_branch != 'master' ]; then \
+      echo 'Deleting branch'; \
+      git checkout master; \
+      git push origin :\"${current_branch}\"; \
+      git branch -D \"${current_branch}\"; \
+    else \
+      echo 'Not running this command on master'; \
+    fi \
+  "
 

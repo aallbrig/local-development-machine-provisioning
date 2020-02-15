@@ -17,10 +17,21 @@
   branch-name = rev-parse --abbrev-ref HEAD
   push-new-branch = !git push -u origin $(git branch-name)
   pr = !git push-new-branch && hub pull-request
+  merge-and-delete = !git merge-branch && git full-delete-current-branch
+  merge-branch = "! \
+    current_branch=$(git branch-name); \
+    if [ \"${current_branch}\" != 'master' ]; then \
+      echo 'Merging branch with master'; \
+      git checkout master; \
+      git merge \"${current_branch}\"; \
+      git checkout \"${current_branch}\"; \
+    else \
+      echo 'Not running this command on master'; \
+    fi \
+  "
   full-delete-current-branch = "! \
     current_branch=$(git branch-name); \
-    echo $current_branch; \
-    if [ $current_branch != 'master' ]; then \
+    if [ \"${current_branch}\" != 'master' ]; then \
       echo 'Deleting branch'; \
       git checkout master; \
       git push origin :\"${current_branch}\"; \

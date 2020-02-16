@@ -1,0 +1,30 @@
+---
+- name: Ensure ~/.config/jrnl directory exists
+  file:
+    path: ~/.config/jrnl
+    state: directory
+
+- name: Stat of current jrnl config
+  stat:
+    path: ~/.config/jrnl/jrnl.yaml
+  register: jrnl_config
+
+- name: Stat of journal.txt
+  stat:
+    path: ~/journal.txt
+  register: journal_text_file
+
+- name: Symlink jrnl config
+  file:
+    src: "{{ role_path }}/files/jrnl.yaml"
+    dest: ~/.config/jrnl/jrnl.yaml
+    state: link
+  when: not jrnl_config.stat.exists or not jrnl_config.stat.islnk
+
+- name: Symlink journal.txt from Dropbox to home directory
+  file:
+    src: ~/Dropbox/journal.txt
+    dest: ~/journal.txt
+    state: link
+  when: not journal_text_file.stat.islnk
+

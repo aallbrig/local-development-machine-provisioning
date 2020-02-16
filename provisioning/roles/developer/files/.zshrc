@@ -86,6 +86,8 @@ export LSCOLORS=GxFxCxDxBxegedabagaced
 # Example aliases
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
+alias j=jrnl
+alias c=clear
 alias k=kubectl
 alias watch='watch ' # allows "watch" to expand another alias (e.g. watch k get po --all-namespaces)
 alias tree='tree -S'

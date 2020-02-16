@@ -5,8 +5,9 @@
     - developer-machine
 
   roles:
-    - developer
+    - brewfile
     - geerlingguy.homebrew
+    - developer
     - role: macbook
       when: ansible_distribution == 'MacOSX'
     - ruby

@@ -10,6 +10,13 @@ cask "firefox"
 cask "google-chrome"
 brew "gpg"
 
+# improvement engine(s)
+brew "jrnl"
+
+# generation engine(s)
+brew "mkdocs"
+brew "poetry"
+
 # peripherals
 cask "homebrew/cask-drivers/corsair-icue"
 
@@ -28,7 +35,7 @@ brew "sbt"
 brew "go"
 
 # VCS junkie
-brew "git
+brew "git"
 brew "hub"
 
 # IDEs/editors

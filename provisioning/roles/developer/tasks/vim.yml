@@ -38,18 +38,10 @@
 - name: Plugins installed to specified pathogen plugin directory
   git:
     repo: "{{ item }}"
-    dest: ~/.vim_runtime/sources_non_forked/{{ item.split('/')[3] }}
+    dest: "~/.vim_runtime/sources_non_forked/{{ item | regex_replace('^.*/(.*)$', '\\1') }}"
   with_items:
-    - https://github.com/ekalinin/dockerfile.vim
-    - https://github.com/leafgarland/typescript-vim
-    - https://github.com/chase/vim-ansible-yaml
-    - https://github.com/severin-lemaignan/vim-minimap
-    - https://github.com/dsawardekar/wordpress.vim
-    - https://github.com/tpope/vim-markdown
-    - https://github.com/janko-m/vim-test
     - https://github.com/scrooloose/syntastic
-    - https://github.com/ervandew/supertab
-    - https://github.com/derekwyatt/vim-scala
     - https://github.com/nathanaelkane/vim-indent-guides
-    - https://github.com/plasticboy/vim-markdown.git
+    - https://github.com/ntpeters/vim-better-whitespace
+    - https://github.com/ervandew/supertab
 

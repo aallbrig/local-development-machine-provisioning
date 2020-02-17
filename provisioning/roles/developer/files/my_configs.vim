@@ -26,7 +26,6 @@ au BufNewFile,BufReadPost *.md set filetype=markdown
 let g:markdown_fenced_languages = ['sh', 'bash=sh', 'css', 'django', 'javascript', 'js=javascript', 'json=javascript', 'perl', 'php', 'python', 'ruby', 'sass', 'xml', 'html']
 
 "" Allow betterwhitespace to be turned on by default, and strip white space on save
- let g:strip_whitespace_on_save=1
-
-
+let g:better_whitespace_enabled = 1
+let g:strip_whitespace_on_save = 1
 

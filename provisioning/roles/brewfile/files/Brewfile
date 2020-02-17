@@ -15,6 +15,8 @@ brew "jrnl"
 # generation engine(s)
 brew "mkdocs"
 brew "poetry"
+brew "openapi-generator"
+brew "protobuf"
 
 # peripherals
 cask "homebrew/cask-drivers/corsair-icue"
@@ -26,6 +28,7 @@ brew "tree"
 brew "coreutils"
 brew "jq"
 brew "watch"
+brew "lolcat"
 
 # language runtimes
 brew "python"
@@ -41,6 +44,10 @@ brew "sbt"
 brew "mysql"
 brew "sqlite"
 
+# static analysis
+brew "shellcheck"
+brew "yamllint"
+
 # VCS junkie
 brew "git"
 brew "hub"
@@ -54,6 +61,7 @@ cask "visual-studio-code"
 cask "virtualbox"
 cask "virtualbox-extension-pack"
 cask "vagrant"
+brew "terraform"
 
 # Remote
 cask "microsoft-remote-desktop-beta"
@@ -70,9 +78,12 @@ brew "operator-sdk"
 # cloud admin
 brew "awscli"
 cask "google-cloud-sdk"
+brew "azure-cli"
 
 # network engineering
 brew "nmap"
+brew "httpie"
+brew "speedtest-cli"
 
 # testing
 cask "postman"

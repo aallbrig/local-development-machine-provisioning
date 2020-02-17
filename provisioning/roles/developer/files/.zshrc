@@ -82,10 +82,7 @@ export LSCOLORS=GxFxCxDxBxegedabagaced
 # plugins, and themes. Aliases can be placed here, though oh-my-zsh
 # users are encouraged to define aliases within the ZSH_CUSTOM folder.
 # For a full list of active aliases, run `alias`.
-#
-# Example aliases
-# alias zshconfig="mate ~/.zshrc"
-# alias ohmyzsh="mate ~/.oh-my-zsh"
+
 alias j=jrnl
 alias c=clear
 alias k=kubectl
@@ -93,7 +90,7 @@ alias watch='watch ' # allows "watch" to expand another alias (e.g. watch k get 
 alias tree='tree -S'
 
 # autocompletion
-source /usr/local/bin/aws_zsh_completer.sh
+source /usr/local/share/zsh/site-functions/aws_zsh_completer.sh
 source <(kubectl completion zsh)
 complete -F __start_kubectl k # get k8s autocompletion working with "k" alias
 
@@ -102,14 +99,7 @@ export KUBECONFIG=$HOME/pi-cluster-config:$HOME/.kube/config
 # export PATH=~/Library/Python/2.7/bin:$PATH
 export PATH=/usr/local/bin:$PATH
 
-export NVM_DIR="$HOME/.nvm"
-[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
-[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
+[ -f $HOME/.nvm-shellrc  ] && . $HOME/.nvm-shellrc
+[ -f $HOME/.rvm-shellrc  ] && . $HOME/.rvm-shellrc
+[ -f $HOME/.go-shellrc  ] && . $HOME/.go-shellrc
 
-# Add RVM to PATH for scripting. Make sure this is the last PATH variable change.
-export PATH="$PATH:$HOME/.rvm/bin"
-
-# Add in Go Lang envvars
-export GOPATH="${HOME}/.go"
-export GOROOT="$(brew --prefix golang)/libexec"
-export PATH="$PATH:${GOPATH}/bin:${GOROOT}/bin"

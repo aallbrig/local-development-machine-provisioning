@@ -5,4 +5,7 @@
 - include: git.yml
 - include: vim.yml
 - include: jrnl.yml
+- include: nvm.yml
+- include: rvm.yml
+- include: go.yml
 

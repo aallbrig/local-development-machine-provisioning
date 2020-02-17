@@ -1,0 +1,13 @@
+---
+- name: Stat for shell additions
+  stat:
+    path: ~/.rvm-shellrc
+  register: shell_config
+
+- name: Symlink shell config
+  file:
+    src: "{{ role_path }}/files/.rvm-shellrc"
+    dest: ~/.rvm-shellrc
+    state: link
+  when: not shell_config.stat.exists or not shell_config.stat.islnk
+

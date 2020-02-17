@@ -1,0 +1,13 @@
+---
+- name: Stat for shell additions
+  stat:
+    path: ~/.go-shellrc
+  register: shell_config
+
+- name: Symlink shell config
+  file:
+    src: "{{ role_path }}/files/.go-shellrc"
+    dest: ~/.go-shellrc
+    state: link
+  when: not shell_config.stat.exists or not shell_config.stat.islnk
+

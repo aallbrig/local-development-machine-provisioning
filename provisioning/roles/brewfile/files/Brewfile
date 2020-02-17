@@ -1,14 +1,13 @@
 # general
 cask "private-internet-access"
+brew "lastpass-cli"
 cask "lastpass"
+brew "gpg"
 cask "dropbox"
-# Hard drive visualization tool
-cask "grandperspective"
-# https://github.com/janten/keypad-layout
-cask "keypad-layout"
+cask "grandperspective" # Hard drive visualization tool
+cask "keypad-layout" # https://github.com/janten/keypad-layout
 cask "firefox"
 cask "google-chrome"
-brew "gpg"
 
 # improvement engine(s)
 brew "jrnl"
@@ -26,19 +25,28 @@ brew "tmux"
 brew "tree"
 brew "coreutils"
 brew "jq"
+brew "watch"
 
 # language runtimes
+brew "python"
+brew "python3"
+brew "go"
+brew "nvm"
 cask "java"
 brew "haskell-stack"
 brew "scala"
 brew "sbt"
-brew "go"
+
+# database runtimes
+brew "mysql"
+brew "sqlite"
 
 # VCS junkie
 brew "git"
 brew "hub"
 
 # IDEs/editors
+brew "vim" # I need my "+ register!
 cask "jetbrains-toolbox"
 cask "visual-studio-code"
 
@@ -52,14 +60,16 @@ cask "microsoft-remote-desktop-beta"
 cask "vmware-horizon-client"
 
 # cloud native engineering
-brew "helm"
+brew "kubernetes-cli"
 brew "istioctl"
+brew "helm"
 brew "kind"
 brew "minikube"
 brew "operator-sdk"
 
 # cloud admin
 brew "awscli"
+cask "google-cloud-sdk"
 
 # network engineering
 brew "nmap"
@@ -72,8 +82,7 @@ cask "arduino"
 brew "gcc"
 cask "gcc-arm-embedded"
 brew "dfu-util"
-# GUI to write OS images to SD cards
-cask "balenaetcher"
+cask "balenaetcher" # GUI to write OS images to SD cards
 cask "makerbot-desktop"
 
 # artist
@@ -81,7 +90,6 @@ cask "adobe-creative-cloud"
 cask "openscad"
 brew "youtube-dl"
 brew "imagemagick"
-cask "gimp"
 cask "gifcapture"
 brew "ffmpeg"
 

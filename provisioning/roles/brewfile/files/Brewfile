@@ -42,7 +42,7 @@ brew "hub"
 cask "jetbrains-toolbox"
 cask "visual-studio-code"
 
-# OS
+# VMs
 cask "virtualbox"
 cask "virtualbox-extension-pack"
 cask "vagrant"
@@ -52,6 +52,7 @@ cask "microsoft-remote-desktop-beta"
 cask "vmware-horizon-client"
 
 # cloud native engineering
+brew "helm"
 brew "istioctl"
 brew "kind"
 brew "minikube"

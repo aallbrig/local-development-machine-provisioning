@@ -83,10 +83,19 @@ export LSCOLORS=GxFxCxDxBxegedabagaced
 # users are encouraged to define aliases within the ZSH_CUSTOM folder.
 # For a full list of active aliases, run `alias`.
 
+alias source-zshrc='source ~/.zshrc'
+alias szrc=source-zshrc
+alias edit-zshrc='vim ~/.zshrc'
+alias ezrc=edit-zshrc
+
+alias edit-git-config='vim ~/.gitconfig'
+alias edit-gitconfig=edit-git-config
+alias egcf=edit-git-config
+
+alias j=jrnl
 alias g=git
 alias gh=hub
 alias h=gh
-alias j=jrnl
 alias c=clear
 alias k=kubectl
 alias watch='watch ' # allows "watch" to expand another alias (e.g. watch k get po --all-namespaces)

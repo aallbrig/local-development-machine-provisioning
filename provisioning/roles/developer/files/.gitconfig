@@ -1,10 +1,14 @@
 [include]
   path = .untracked-gitconfig
 
+[pager]
+  branch = false
+
 [alias]
   aliases = !git config --get-regexp ^alias\\. | sed -e s/^alias.// -e s/\\ /\\ $(printf \"\\043\")\\ / | column -t -s $(printf \"\\043\")
   alias = aliases
   browse = !hub browse
+  br = branch
   s = status
   a = add
   p = pull
@@ -14,6 +18,7 @@
   d = diff
   dc = diff --cached
   new-branch = checkout -b
+  nbr = new-branch
   nb = new-branch
   undo-local-commit = reset HEAD~1
   ulc = undo-local-commit

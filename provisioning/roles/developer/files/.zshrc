@@ -83,11 +83,15 @@ export LSCOLORS=GxFxCxDxBxegedabagaced
 # users are encouraged to define aliases within the ZSH_CUSTOM folder.
 # For a full list of active aliases, run `alias`.
 
+alias g=git
+alias gh=hub
+alias h=gh
 alias j=jrnl
 alias c=clear
 alias k=kubectl
 alias watch='watch ' # allows "watch" to expand another alias (e.g. watch k get po --all-namespaces)
 alias tree='tree -S'
+alias lolcat='lolcat 2&> /dev/null '
 
 # autocompletion
 source /usr/local/share/zsh/site-functions/aws_zsh_completer.sh
@@ -102,4 +106,8 @@ export PATH=/usr/local/bin:$PATH
 [ -f $HOME/.nvm-shellrc  ] && . $HOME/.nvm-shellrc
 [ -f $HOME/.rvm-shellrc  ] && . $HOME/.rvm-shellrc
 [ -f $HOME/.go-shellrc  ] && . $HOME/.go-shellrc
+
+if command -v tmux &> /dev/null && [ -n "$PS1" ] && [[ ! "$TERM" =~ screen ]] && [[ ! "$TERM" =~ tmux ]] && [ -z "$TMUX" ]; then
+  exec tmux
+fi
 

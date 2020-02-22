@@ -2,7 +2,8 @@
   path = .untracked-gitconfig
 
 [alias]
-  aliases = !git config --get-regexp ^alias\\. | sed -e s/^alias.// -e s/\\ /\\ $(printf \"\\043\")\\ / | column -t -s $(printf \"\\043\") | sort -k 1
+  aliases = !git config --get-regexp ^alias\\. | sed -e s/^alias.// -e s/\\ /\\ $(printf \"\\043\")\\ / | column -t -s $(printf \"\\043\")
+  alias = aliases
   browse = !hub browse
   s = status
   a = add
@@ -13,9 +14,20 @@
   d = diff
   dc = diff --cached
   new-branch = checkout -b
-  undo-localcommit = reset HEAD~1
+  nb = new-branch
+  undo-local-commit = reset HEAD~1
+  ulc = undo-local-commit
   branch-name = rev-parse --abbrev-ref HEAD
+  bn = branch-name
+  add-upstream = remote add upstream $1
+  fetch-upstream = fetch upstream
+  fu = fetch-upstream
+  fetch-upstream-master = fetch upstream/master
+  fum = fetch-upstream-master
+  rebase-upstream-master = rebase upstream/master
+  rum = rebase upstream/master
   push-new-branch = !git push -u origin $(git branch-name)
+  pnb = push-new-branch
   pr = !git push-new-branch && hub pull-request
   merge-and-delete = !git merge-branch && git full-delete-current-branch
   merge-branch = "! \

@@ -35,6 +35,8 @@
   pnb = push-new-branch
   pr = !git push-new-branch && hub pull-request
   merge-and-delete = !git merge-branch && git full-delete-current-branch
+  prune-local-branches-dry = remote prune origin --dry-run
+  prune-local-branches-execute = remote prune origin
   merge-branch = "! \
     current_branch=$(git branch-name); \
     if [ \"${current_branch}\" != 'master' ]; then \

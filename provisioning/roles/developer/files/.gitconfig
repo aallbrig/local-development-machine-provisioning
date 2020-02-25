@@ -17,6 +17,8 @@
   cmt = commit -m
   d = diff
   dc = diff --cached
+  diff-master = !git diff master..$(git branch-name)
+  dm = diff-master
   new-branch = checkout -b
   nbr = new-branch
   nb = new-branch

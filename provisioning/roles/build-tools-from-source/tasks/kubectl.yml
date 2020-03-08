@@ -1,0 +1,16 @@
+---
+- name: mkdir src/k8s.io
+  file:
+    path: ~/.go/src/k8s.io
+    state: directory
+    mode: '0755'
+
+- name: Get kubernetes/kubernetes source code
+  git:
+    repo: https://github.com/kubernetes/kubernetes.git
+    dest:
+      ~/.go/src/k8s.io/src/k8s.io/kubernetes
+
+- name: Execute k8s Makefile
+  make:
+    chdir: ~/.go/src/k8s.io/src/k8s.io/kubernetes

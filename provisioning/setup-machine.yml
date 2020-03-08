@@ -4,14 +4,22 @@
     - localhost
     - developer-machine
 
+  vars_prompt:
+    - name: build_kubectl
+      prompt: Build kubectl bin from source (y/n)?
+      private: false
+      default: "n"
+
   roles:
-    - brewfile
-    - geerlingguy.homebrew
-    - developer
+    - build-tools-from-source
+    - role: brewfile
+      when: ansible_distribution == 'MacOSX'
+    - role: geerlingguy.homebrew
+      when: ansible_distribution == 'MacOSX'
     - role: macbook
       when: ansible_distribution == 'MacOSX'
+    - developer
     - ruby
     - node
     - artist
     - arduino-hacker
-

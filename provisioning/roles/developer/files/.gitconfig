@@ -29,7 +29,7 @@
   add-upstream = remote add upstream $1
   fetch-upstream = fetch upstream
   fu = fetch-upstream
-  fetch-upstream-master = fetch upstream/master
+  fetch-upstream-master = fetch upstream master
   fum = fetch-upstream-master
   rebase-upstream-master = rebase upstream/master
   rum = rebase upstream/master

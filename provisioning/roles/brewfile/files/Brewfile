@@ -110,6 +110,7 @@ brew "youtube-dl"
 brew "imagemagick"
 cask "gifcapture"
 brew "ffmpeg"
+cask "elgato-game-capture-hd"
 
 # chat ops
 cask "discord"

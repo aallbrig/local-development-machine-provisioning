@@ -101,7 +101,6 @@ brew "gcc"
 cask "gcc-arm-embedded"
 brew "dfu-util"
 cask "balenaetcher" # GUI to write OS images to SD cards
-cask "makerbot-print"
 
 # artist
 cask "adobe-creative-cloud"

@@ -56,7 +56,8 @@ plugins=(git)
 source $ZSH/oh-my-zsh.sh
 
 # User configuration
-[ -f $HOME/.untracked-shellrc  ] && . $HOME/.untracked-shellrc
+# File for items that should not be version controlled (API keys, secrets, etc)
+[ -f $HOME/.untracked-shellrc ] && . $HOME/.untracked-shellrc
 # export MANPATH="/usr/local/man:$MANPATH"
 
 # You may need to manually set your language environment
@@ -118,10 +119,12 @@ export KUBECONFIG=$HOME/pi-cluster-config:$HOME/.kube/config
 # export PATH=~/Library/Python/2.7/bin:$PATH
 export PATH=/usr/local/bin:$PATH
 
-[ -f $HOME/.nvm-shellrc  ] && . $HOME/.nvm-shellrc
-[ -f $HOME/.rvm-shellrc  ] && . $HOME/.rvm-shellrc
-[ -f $HOME/.go-shellrc  ] && . $HOME/.go-shellrc
+# I have language specific rc files (e.g. ~/.git-shellrc, ~/.node-shellrc, ~/.go-shellrc) where language specific configuration (and/or generate fns shell fns) exist
+for shellrc in $HOME/.*-shellrc; do
+  . $shellrc
+done
 
+# <3 tmux
 if command -v tmux &> /dev/null && [ -n "$PS1" ] && [[ ! "$TERM" =~ screen ]] && [[ ! "$TERM" =~ tmux ]] && [ -z "$TMUX" ]; then
   exec tmux
 fi

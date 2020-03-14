@@ -1,0 +1,39 @@
+template_dir="${HOME}/templates/git"
+
+function gen::git::ignore() {
+  cat "${template_dir}"/{macos,windows,jetbrains}.gitignore >> .gitignore
+}
+
+function gen::git::contributing() {
+  mkdir -p ./.github
+  cp "${template_dir}"/CONTRIBUTING.md ./.github
+}
+
+function gen::git::issue() {
+  mkdir -p ./.github
+  cp "${template_dir}"/ISSUE_TEMPLATE.md ./.github
+}
+
+function gen::git::pr() {
+  mkdir -p ./.github
+  cp "${template_dir}"/PULL_REQUEST_TEMPLATE.md ./.github
+}
+
+function gen::git::readme() {
+  mkdir -p ./.github
+  cp "${template_dir}"/README.md .
+}
+
+function gen::git::init() {
+  echo "Generating git repo"
+
+  git init
+  gen::git::ignore
+  gen::git::contributing
+  gen::git::pr
+  gen::git::readme
+  ls -la
+
+  echo ""
+  echo "Git project initialized. Feel free to edit README.md."
+}

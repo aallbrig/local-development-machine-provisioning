@@ -23,3 +23,14 @@
     dest: ~/.gitconfig
     state: link
 
+- name: Stat for shell additions
+  stat:
+    path: ~/.git-shellrc
+  register: shell_config
+
+- name: Symlink shell config
+  file:
+    src: "{{ role_path }}/files/.git-shellrc"
+    dest: ~/.git-shellrc
+    state: link
+  when: not shell_config.stat.exists or not shell_config.stat.islnk

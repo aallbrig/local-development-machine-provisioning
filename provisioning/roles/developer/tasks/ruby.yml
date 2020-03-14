@@ -1,13 +1,13 @@
 ---
 - name: Stat for shell additions
   stat:
-    path: ~/.nvm-shellrc
+    path: ~/.ruby-shellrc
   register: shell_config
 
 - name: Symlink shell config
   file:
-    src: "{{ role_path }}/files/.nvm-shellrc"
-    dest: ~/.nvm-shellrc
+    src: "{{ role_path }}/files/.ruby-shellrc"
+    dest: ~/.ruby-shellrc
     state: link
   when: not shell_config.stat.exists or not shell_config.stat.islnk
 

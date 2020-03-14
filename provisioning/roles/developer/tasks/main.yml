@@ -2,6 +2,7 @@
 - include: ohmyzsh.yml
 - include: ssh.yml
 - include: tmux.yml
+- include: ansible.yml
 - include: git.yml
 - include: vim.yml
 - include: jrnl.yml

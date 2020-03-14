@@ -1,0 +1,17 @@
+template_dir="${HOME}/templates/ansible"
+
+function gen::ansible::hacks() {
+  mkdir -p ./scripts
+  cp "${template_dir}"/scripts/symlink-to-ansible-home.sh ./scripts
+}
+
+function gen::ansible::init() {
+  echo "Generating ansible repo"
+
+  mkdir -p ansible/{inventory,tasks,playbooks,roles,group_vars,host_vars}
+  touch ansible/{inventory,tasks,playbooks,roles,group_vars,host_vars}/main.yml
+
+  echo ""
+  echo "Ansible project initialized. Feel free to edit README.md."
+}
+

@@ -1,0 +1,12 @@
+---
+- name: Stat for shell additions
+  stat:
+    path: ~/.ansible-shellrc
+  register: shell_config
+
+- name: Symlink shell config
+  file:
+    src: "{{ role_path }}/files/.ansible-shellrc"
+    dest: ~/.ansible-shellrc
+    state: link
+  when: not shell_config.stat.exists or not shell_config.stat.islnk

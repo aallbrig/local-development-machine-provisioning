@@ -102,6 +102,12 @@ alias watch='watch ' # allows "watch" to expand another alias (e.g. watch k get 
 alias tree='tree -S'
 alias lolcat='lolcat 2&> /dev/null '
 
+# code generation (bash style)
+alias gen-go='mkdir -p go/{pkg,cmd} && cd go && go mod init'
+alias gen-ts='mkdir -p typescript/{types,src} && cd typescript && npm init -y'
+alias gen-ansible='mkdir -p ansible/{hosts,playbooks,tasks} && touch ansible{hosts,playbooks,tasks}/main.yaml'
+alias gen-scripts='mkdir -p scripts && touch scripts/main.sh && chmod +x scripts/main.sh'
+
 # autocompletion
 source /usr/local/share/zsh/site-functions/aws_zsh_completer.sh
 source <(kubectl completion zsh)

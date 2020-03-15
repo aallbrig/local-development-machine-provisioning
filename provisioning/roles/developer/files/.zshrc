@@ -103,7 +103,7 @@ alias watch='watch ' # allows "watch" to expand another alias (e.g. watch k get 
 alias tree='tree -S'
 alias lolcat='lolcat 2&> /dev/null '
 
-# code generation (bash style)
+# Generators for languages are in various
 function available_generator_functions() {
   cat $HOME/.*-shellrc | grep 'function gen::' | sed -e 's/function //g' -e 's/() {//g'
 }

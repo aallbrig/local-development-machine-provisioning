@@ -105,7 +105,7 @@ alias lolcat='lolcat 2&> /dev/null '
 
 # Generators for languages are in various
 function available_generator_functions() {
-  cat $HOME/.*-shellrc | grep '^\w*function gen::' | sed -e 's/function //g' -e 's/() {//g'
+  cat $HOME/.*-shellrc | grep '^\w*function gen::.*()' | sed -e 's/function //g' -e 's/() {//g'
 }
 alias agf='available_generator_functions'
 

@@ -9,4 +9,7 @@
 - include: node.yml
 - include: ruby.yml
 - include: go.yml
-
+- include: python.yml
+- include: java.yml
+- include: scala.yml
+- include: kubernetes.yml

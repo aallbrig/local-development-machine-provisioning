@@ -1,0 +1,14 @@
+# Configuration (if applicable)
+
+# Generators (if applicable)
+# template_dir="${HOME}/templates/java"
+#
+# function gen::java::init() {
+#   echo "Initializing java project"
+#
+#   # Replace with program specific logic
+#
+#   echo ""
+#   echo "Java project initialized."
+# }
+

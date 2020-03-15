@@ -1,0 +1,15 @@
+# Configuration (if applicable)
+
+# Generators (if applicable)
+# template_dir="${HOME}/templates/python"
+#
+# function gen::python::init() {
+#   echo "Initializing python project."
+#
+#   # Replace with program specific logic
+#   mkdir -p python/{foo,bar,baz}/python.python
+#
+#   echo ""
+#   echo "Python project initialized."
+# }
+

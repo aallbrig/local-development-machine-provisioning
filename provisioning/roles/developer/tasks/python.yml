@@ -1,0 +1,12 @@
+---
+- name: Stat check for file
+  stat:
+    path: ~/.python-shellrc
+  register: symlink_check
+
+- name: Symlink file
+  file:
+    src: "{{ role_path }}/files/.python-shellrc"
+    dest: ~/.python-shellrc
+    state: link
+  when: not symlink_check.stat.exists or not symlink_check.stat.islnk

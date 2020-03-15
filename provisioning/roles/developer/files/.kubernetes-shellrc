@@ -1,0 +1,14 @@
+# Configuration (if applicable)
+
+# Generators (if applicable)
+# template_dir="${HOME}/templates/kubernetes"
+#
+# function gen::kubernetes::init() {
+#   echo "Initializing kubernetes project"
+#
+#   # Replace with program specific logic
+#
+#   echo ""
+#   echo "kubernetes project initialized."
+# }
+

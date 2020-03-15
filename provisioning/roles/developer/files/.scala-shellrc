@@ -1,0 +1,14 @@
+# Configuration (if applicable)
+
+# Generators (if applicable)
+# template_dir="${HOME}/templates/scala"
+#
+# function gen::scala::init() {
+#   echo "Initializing scala project"
+#
+#   # Replace with program specific logic
+#
+#   echo ""
+#   echo "scala project initialized."
+# }
+

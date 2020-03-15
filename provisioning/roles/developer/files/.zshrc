@@ -104,10 +104,10 @@ alias tree='tree -S'
 alias lolcat='lolcat 2&> /dev/null '
 
 # code generation (bash style)
-alias gen-go='mkdir -p go/{pkg,cmd} && cd go && go mod init'
-alias gen-ts='mkdir -p typescript/{types,src} && cd typescript && npm init -y'
-alias gen-ansible='mkdir -p ansible/{hosts,playbooks,tasks} && touch ansible{hosts,playbooks,tasks}/main.yaml'
-alias gen-scripts='mkdir -p scripts && touch scripts/main.sh && chmod +x scripts/main.sh'
+function available_generator_functions() {
+  cat $HOME/.*-shellrc | grep 'function gen::' | sed -e 's/function //g' -e 's/() {//g'
+}
+alias agf='available_generator_functions'
 
 # autocompletion
 source /usr/local/share/zsh/site-functions/aws_zsh_completer.sh

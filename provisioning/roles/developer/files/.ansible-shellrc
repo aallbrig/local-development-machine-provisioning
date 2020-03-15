@@ -1,17 +1,38 @@
 template_dir="${HOME}/templates/ansible"
 
 function gen::ansible::hacks() {
-  mkdir -p ./scripts
-  cp "${template_dir}"/scripts/symlink-to-ansible-home.sh ./scripts
+  mkdir -p ./hacks
+  cp "${template_dir}"/hacks/symlink-to-ansible-home.sh ./hacks
+}
+
+function gen::ansible::ansibleconfig() {
+  mkdir -p ./ansible
+  cp "${template_dir}"/ansible.cfg ./ansible
+}
+
+function gen::ansible::role() {
+  role_name=${1}
+
+  if [ -z "${role_name}" ];
+  then
+    echo "Please provide a name for your role"
+    return 1
+  else
+    mkdir -p ./ansible/roles/"${role_name}"/{tasks,handlers,files,templates,vars,defaults,meta}
+    touch ./ansible/roles/"${role_name}"/{tasks,handlers,vars,defaults,meta}/main.yml
+    touch ./ansible/roles/"${role_name}"/{files,templates}/empty
+  fi
 }
 
 function gen::ansible::init() {
   echo "Generating ansible repo"
 
-  mkdir -p ansible/{inventory,tasks,playbooks,roles,group_vars,host_vars}
-  touch ansible/{inventory,tasks,playbooks,roles,group_vars,host_vars}/main.yml
+  mkdir -p ansible/{inventory,tasks,handlers,playbooks,roles,group_vars,host_vars}
+  touch ansible/{inventory,tasks,handlers,playbooks,roles}/main.yml
+  touch ansible/{group_vars,host_vars}/empty
+  gen::ansible::ansibleconfig
 
   echo ""
-  echo "Ansible project initialized. Feel free to edit README.md."
+  echo "Ansible project initialized."
 }
 

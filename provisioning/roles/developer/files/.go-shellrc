@@ -1,5 +1,44 @@
-# Add in Go Lang envvars
+# Configuration (if applicable)
 export GOPATH="${HOME}/.go"
 export GOROOT="$(brew --prefix golang)/libexec"
 export PATH="$PATH:${GOPATH}/bin:${GOROOT}/bin"
+
+# Generators (if applicable)
+# template_dir="${HOME}/templates/go"
+#
+function gen::go::cobra::init() {
+  local cli_name=$1
+
+  if [ -z "${cli_name}" ];
+  then
+    echo "Please provide a name for your cobra CLI"
+    return 1
+  else
+    echo "Initializing cobra project"
+
+    mkdir -p go
+    cobra init --pkg-name "${cli_name}" go/"${cli_name}"
+
+    echo ""
+    echo "cobra project initialized."
+  fi
+}
+
+function gen::go::hugo::init() {
+  local name=$1
+
+  if [ -z "${name}" ];
+  then
+    echo "Please provide a name for your hugo site"
+    return 1
+  else
+    echo "Initializing hugo project"
+
+    mkdir -p go
+    hugo new site "go/${name}" --format yaml
+
+    echo ""
+    echo "hugo project initialized."
+  fi
+}
 

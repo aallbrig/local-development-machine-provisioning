@@ -1,6 +1,7 @@
 # Configuration (if applicable)
 export GOPATH="${HOME}/.go"
 export GOROOT="$(brew --prefix golang)/libexec"
+export GOPERSONAL="${GOPATH}/src/github.com/aallbrig"
 export PATH="$PATH:${GOPATH}/bin:${GOROOT}/bin"
 
 # Generators (if applicable)

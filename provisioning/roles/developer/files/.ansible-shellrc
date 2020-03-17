@@ -27,9 +27,10 @@ function gen::ansible::role() {
 function gen::ansible::init() {
   echo "Generating ansible repo"
 
-  mkdir -p ansible/{inventory,tasks,handlers,playbooks,roles,group_vars,host_vars}
+  mkdir -p ansible/{inventory,tasks,handlers,playbooks,roles}
+  mkdir -p ansible/inventory/{group_vars,host_vars}
   touch ansible/{inventory,tasks,handlers,playbooks,roles}/main.yml
-  touch ansible/{group_vars,host_vars}/empty
+  touch ansible/inventory/{group_vars,host_vars}/empty
   gen::ansible::ansibleconfig
 
   echo ""

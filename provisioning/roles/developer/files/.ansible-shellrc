@@ -1,13 +1,16 @@
-template_dir="${HOME}/templates/ansible"
+# Configuration
+PATH="/etc/ansible:/etc/ansible/playbooks:${PATH}"
+ANSIBLE_TEMPLATE_DIR="${HOME}/templates/ansible"
 
+# Code generation functions
 function gen::ansible::hacks() {
-  mkdir -p ./hacks
-  cp "${template_dir}"/hacks/symlink-to-ansible-home.sh ./hacks
+  mkdir -p ansible/hacks
+  cp "${ANSIBLE_TEMPLATE_DIR}"/hacks/symlink-to-ansible-home.sh ansible/hacks
 }
 
 function gen::ansible::ansibleconfig() {
-  mkdir -p ./ansible
-  cp "${template_dir}"/ansible.cfg ./ansible
+  mkdir -p ansible
+  cp "${ANSIBLE_TEMPLATE_DIR}"/ansible.cfg ansible
 }
 
 function gen::ansible::role() {
@@ -19,19 +22,125 @@ function gen::ansible::role() {
     return 1
   else
     mkdir -p ./ansible/roles/"${role_name}"/{tasks,handlers,files,templates,vars,defaults,meta}
-    touch ./ansible/roles/"${role_name}"/{tasks,handlers,vars,defaults,meta}/main.yml
-    touch ./ansible/roles/"${role_name}"/{files,templates}/empty
+    touch ./ansible/roles/"${role_name}"/{files,templates}/.empty
+
+  cat << HERE > ansible/roles/"${role_name}"/vars/main.yml
+---
+#key1: value1
+#key2: value2
+#key3: value3
+HERE
+
+  cat << HERE > ansible/roles/"${role_name}"/defaults/main.yml
+---
+#key1: value1
+#key2: value2
+#key3: value3
+HERE
+
+  cat << HERE > ansible/roles/"${role_name}"/tasks/main.yml
+---
+#- name: Ping!
+#  ping:
+#  notifies:
+#    - Ping
+#- include: subtask.yml
+HERE
+
+  cat << HERE > ansible/roles/"${role_name}"/handlers/main.yml
+---
+#- name: Ping
+#  ping:
+#- include: subhandler.yml
+HERE
+  fi
+}
+
+function gen::ansible::group_var() {
+  group_name=${1}
+
+  if [ -z "${group_name}" ];
+  then
+    echo "Please provide a name for your ansible group var file"
+    return 1
+  else
+    mkdir -p ./ansible/inventory/group_vars
+    cat << HERE > ./ansible/inventory/group_vars/"${group_name}".yml
+---
+#key1: value1
+#key2: value2
+#key3: value3
+HERE
+  fi
+}
+
+function gen::ansible::host_var() {
+  host_name=${1}
+
+  if [ -z "${host_name}" ];
+  then
+    echo "Please provide a name for your host var file"
+    return 1
+  else
+    mkdir -p ./ansible/inventory/host_vars
+    cat << HERE > ./ansible/inventory/host_vars/"${host_name}".yml
+---
+#key1: value1
+#key2: value2
+#key3: value3
+HERE
   fi
 }
 
 function gen::ansible::init() {
-  echo "Generating ansible repo"
+  echo "Generating ansible project"
 
   mkdir -p ansible/{inventory,tasks,handlers,playbooks,roles}
-  mkdir -p ansible/inventory/{group_vars,host_vars}
-  touch ansible/{inventory,tasks,handlers,playbooks,roles}/main.yml
-  touch ansible/inventory/{group_vars,host_vars}/empty
+
+  # Initialize expected ansible files
   gen::ansible::ansibleconfig
+  gen::ansible::hacks
+
+  # TODO: Split into separate gen::ansible fns?
+  cat << HERE > ansible/inventory/hosts.yml
+---
+# Tip: Use group_vars/group_name.yml to add in group variables for group_name
+# Tip: Use host_vars/192.168.3.155.yml to add some host variables for the host with IP address 192.168.3.155.yml
+# group_name:
+#   hosts:
+#     192.168.[0:8].[150:200]:
+#   children:
+#     other_group_names:
+HERE
+
+  cat << HERE > ansible/playbooks/ping-all.yml
+---
+- name: Pings all hosts
+  hosts: all
+  tasks:
+    - name: Ping!
+      ping:
+#    - import_tasks: ../tasks/main.yml
+#  handlers:
+#    - import_tasks: ../handlers/main.yml
+HERE
+
+  cat << HERE > ansible/tasks/main.yml
+---
+#- name: Ping!
+#  ping:
+#  notifies:
+#    - Ping
+#- include: subtask.yml
+HERE
+
+  cat << HERE > ansible/handlers/main.yml
+---
+#- name: Ping
+#  ping:
+#- include: subhandler.yml
+HERE
+
 
   echo ""
   echo "Ansible project initialized."

@@ -1,0 +1,121 @@
+# Configuration
+
+# Code generation functions
+SHELL_TEMPLATE_DIR="${HOME}/templates/shell"
+function gen::shell::partial::positional_variable() {
+  local variable_name="${1:-variable_name}"
+  local arg_position="${2:-1}"
+  local default_value="${3:-default_value}"
+
+  cat << HERE
+${variable_name}="\${${arg_position}:-${default_value}}"
+HERE
+}
+
+function gen::shell::partial::named_params() {
+  # defaults
+  local variable_name="variable_name"
+  local default_variable_value="default_variable_value"
+  local param_key="--name"
+
+  # name parameters
+  for argument in "$@"
+  do
+    arg_key=$(echo $argument | cut -f1 -d=)
+    arg_value=$(echo $argument | cut -f2 -d=)
+
+    case "${arg_key}" in
+      --name | --variable-name) variable_name=${arg_value} ;;
+      --param-key | --param-name) param_key=${arg_value} ;;
+      --default-variable-value) default_variable_value=${arg_value} ;;
+      *)
+    esac
+  done
+
+  cat << HERE
+# defaults
+local ${variable_name}="${default_variable_value}"
+
+# named param processing
+for argument in "\$@"
+do
+  arg_key=\$(echo \$argument | cut -f1 -d=)
+  arg_value=\$(echo \$argument | cut -f2 -d=)
+
+  case "\${arg_key}" in
+    # Add in fn params in this switch/case aliases using | e.g.
+    # -l | --long-name) variable=\${arg_value} ;;
+    ${param_key}) ${variable_name}=\${arg_value} ;;
+    *)
+  esac
+done
+
+# test output
+echo "${variable_name}: \${${variable_name}}"
+HERE
+}
+
+function gen::shell::partial::generatorfunction() {
+  cat << HERE
+function gen::runtime::init) {
+  $(gen::shell::partial::named_params)
+
+  $(gen::shell::partial::multi_line_output)
+}
+HERE
+}
+
+function gen::shell::partial::multi_line_output() {
+cat << HERE_OUTER
+cat << HERE
+multi
+line contents
+go here
+HERE
+HERE_OUTER
+}
+
+function gen::shell::partial::control::ifelse_variablenotexists() {
+  variable_name="${1:-variable_name}"
+  cat << HERE
+if [ -z "\${${variable_name}}" ];
+then
+  echo "Provide error message"
+  return 1
+else
+  echo "Variable \${${variable_name}} is defined. Add business logic here."
+fi
+HERE
+}
+
+function gen::shell::init() {
+  echo "Generating shell project"
+
+  # defaults
+  local filename=".$(uuidgen)-shellrc"
+
+  # named param processing
+  for argument in "$@"
+  do
+    arg_key=$(echo $argument | cut -f1 -d=)
+    arg_value=$(echo $argument | cut -f2 -d=)
+    case "${arg_key}" in
+      filename | --filename | -f) filename=${arg_value} ;;
+      *)
+    esac
+  done
+
+  echo "Creating ~/"${filename}""
+  cat << HERE > ~/"${filename}"
+# Configuration
+
+# Generator Functions
+
+function gen::generic::init() {
+$(gen::shell::partial::named_params --param-key='--optional-param' | sed -e 's/^/  /g')
+
+  $(gen::shell::partial::multi_line_output)
+}
+HERE
+}
+

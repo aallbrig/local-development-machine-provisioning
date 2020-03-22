@@ -56,8 +56,25 @@ HERE
 }
 
 function gen::shell::partial::generatorfunction() {
+  # defaults
+  local function_name="gen::runtime::init"
+
+  # named param processing
+  for argument in "$@"
+  do
+    arg_key=$(echo $argument | cut -f1 -d=)
+    arg_value=$(echo $argument | cut -f2 -d=)
+
+    case "${arg_key}" in
+      # Add in fn params in this switch/case aliases using | e.g.
+      # -l | --long-name) variable=${arg_value} ;;
+      function-name | --function-name | -fn) function_name=${arg_value} ;;
+      *)
+    esac
+  done
+
   cat << HERE
-function gen::runtime::init) {
+function ${function_name}() {
   $(gen::shell::partial::named_params)
 
   $(gen::shell::partial::multi_line_output)
@@ -88,11 +105,24 @@ fi
 HERE
 }
 
-function gen::shell::init() {
-  echo "Generating shell project"
+function gen::shell::shellrc::init() {
+  echo "Generating a shellrc file"
 
   # defaults
   local filename=".$(uuidgen)-shellrc"
+  local symlink_to_home=0
+  local help_text=$(cat << 'HERE'
+Options
+--filename (-f)   Optional name of shellrc file. A uuid based name will be used if none is passed in.
+--symlink (-s)    Symlink the newly created shellrc file to the user's home directory.
+
+Examples
+filename=foobar.txt
+--filename=foobar.txt
+--filename=foobar.txt --symlink
+-f=foobar.txt -s
+HERE
+)
 
   # named param processing
   for argument in "$@"
@@ -101,21 +131,29 @@ function gen::shell::init() {
     arg_value=$(echo $argument | cut -f2 -d=)
     case "${arg_key}" in
       filename | --filename | -f) filename=${arg_value} ;;
+      --symlink | -s) symlink_to_home=1 ;;
+      help | --help | -h) {echo "${help_text}"; return} ;;
       *)
     esac
   done
 
-  echo "Creating ~/"${filename}""
-  cat << HERE > ~/"${filename}"
+  echo "Creating $(pwd)/"${filename}""
+  cat << HERE > $(pwd)/"${filename}"
 # Configuration
 
 # Generator Functions
 
 function gen::generic::init() {
-$(gen::shell::partial::named_params --param-key='--optional-param' | sed -e 's/^/  /g')
+  $(gen::shell::partial::named_params --param-key='--optional-param' | sed -e 's/^/  /g')
 
   $(gen::shell::partial::multi_line_output)
 }
 HERE
+
+  if [ "${symlink_to_home}" -eq 1 ];
+  then
+    echo "Creating symlink: ${HOME}/${filename}"
+    ln -s $(pwd)/"${filename}" "${HOME}"/"${filename}"
+  fi
 }
 

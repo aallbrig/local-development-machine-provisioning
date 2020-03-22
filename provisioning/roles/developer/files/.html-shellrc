@@ -1,0 +1,114 @@
+# Configuration
+
+# Generator Functions
+function gen::html::partial::tag::js() {
+  # defaults
+  local src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"
+
+  # named param processing
+  for argument in "$@"
+  do
+    arg_key=$(echo $argument | cut -f1 -d=)
+    arg_value=$(echo $argument | cut -f2 -d=)
+
+    case "${arg_key}" in
+      --href | -h | --source | -src) src=${arg_value} ;;
+      *)
+    esac
+  done
+
+    cat << HERE
+<script src="${src}"></script>
+HERE
+}
+
+function gen::html::partial::tag::css() {
+  # defaults
+  local href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
+
+  # named param processing
+  for argument in "$@"
+  do
+    arg_key=$(echo $argument | cut -f1 -d=)
+    arg_value=$(echo $argument | cut -f2 -d=)
+
+    case "${arg_key}" in
+      --href | -h | --source | -src) href=${arg_value} ;;
+      *)
+    esac
+  done
+
+    cat << HERE
+<link rel="stylesheet" href="${href}">
+HERE
+}
+
+function gen::html::partial::tag::image() {
+  # defaults
+  local src="https://editorial.designtaxi.com/news-zoo2803/1.jpg"
+  local alt_text="default_variable_value"
+
+  # named param processing
+  for argument in "$@"
+  do
+	arg_key=$(echo $argument | cut -f1 -d=)
+	arg_value=$(echo $argument | cut -f2 -d=)
+
+	case "${arg_key}" in
+	  # Add in fn params in this switch/case aliases using | e.g.
+	  # -l | --long-name) variable=${arg_value} ;;
+	  alt-text | --alt-text | -alt) alt_text=$(echo "${arg_value}" | cut -c 1-55) ;;
+	  *)
+	esac
+  done
+
+  cat << HERE
+<img src="${src}" alt="${alt_text}" />
+HERE
+}
+
+
+function gen::html::init() {
+  # defaults
+  local title="Some generic HTML page"
+  local description="Some generic description of this generic HTML page. Target 130 characters for mobile or target 160 a desktop search experience"
+  local utf_8_charset="en"
+  local robots_directive="index, follow" # available directives: index, noindex, follow, nofollow, none, noarchive, nosnippet, noimageindex, nocache
+
+  # named param processing
+  for argument in "$@"
+  do
+    arg_key=$(echo $argument | cut -f1 -d=)
+    arg_value=$(echo $argument | cut -f2 -d=)
+
+    case "${arg_key}" in
+      # Add in fn params in this switch/case aliases using | e.g.
+      # -l | --long-name) variable=${arg_value} ;;
+      title | --title | -t) title=$(echo $arg_value | cut -c1-60) ;;
+      description | --description | -d) description=$(echo $arg_value | cut -c1-160) ;;
+      charset | --charset) utf_8_charset=${arg_value} ;;
+      # TODO: implement sanitizing logic on robots param
+      robots | --robots | --robots-meta | -r) robots_directive=$(echo $arg_value) ;;
+      *)
+    esac
+  done
+
+  cat << HERE
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="${utf_8_charset}">
+    <meta name="robots" contents="${robots_directive}">
+    <title>${title}</title>
+    <meta name="description" contents="${description}">
+    <meta name="viewport" content="width=device-width,initial-scale=1.0">
+  </head>
+  <body>
+    <h1> Basic HTML page </h1>
+    <p> This is a very basic HTML page </p>
+    <h3> Search Engine Optimization (S.E.O or SEO) </h3>
+    <p> Make sure to create your HTML pages in ways that increase SEO visibility! One increases SEO by making the pages and website better. For example if you want to increase SEO rankings you should be using HTML in the declarative way it was meant to be used, which goes a long way towards making your website more usable. </p>
+  </body>
+</html>
+HERE
+}

@@ -111,6 +111,10 @@ cask "gifcapture"
 brew "ffmpeg"
 cask "elgato-game-capture-hd"
 
+# 3d
+cask "blender"
+cask "flashforge-flashprint"
+
 # chat ops
 cask "discord"
 cask "slack"

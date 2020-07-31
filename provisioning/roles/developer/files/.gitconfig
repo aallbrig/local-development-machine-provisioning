@@ -11,6 +11,7 @@
   br = branch
   s = status
   a = add
+  add-deleted-only = !git a $(git ls-files --deleted)
   p = pull
   aa = add .
   r = reset
@@ -64,4 +65,3 @@
       echo 'Not running this command on master'; \
     fi \
   "
-

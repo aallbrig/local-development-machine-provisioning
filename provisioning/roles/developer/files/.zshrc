@@ -56,8 +56,6 @@ plugins=(git)
 source $ZSH/oh-my-zsh.sh
 
 # User configuration
-# File for items that should not be version controlled (API keys, secrets, etc)
-[ -f $HOME/.untracked-shellrc ] && . $HOME/.untracked-shellrc
 # export MANPATH="/usr/local/man:$MANPATH"
 
 # You may need to manually set your language environment
@@ -99,6 +97,7 @@ alias gh=hub
 alias h=gh
 alias c=clear
 alias k=kubectl
+alias tf=terraform
 alias watch='watch ' # allows "watch" to expand another alias (e.g. watch k get po --all-namespaces)
 alias tree='tree -S'
 alias lolcat='lolcat 2&> /dev/null '
@@ -118,6 +117,7 @@ export KUBECONFIG=$HOME/pi-cluster-config:$HOME/.kube/config
 
 # export PATH=~/Library/Python/2.7/bin:$PATH
 export PATH=/usr/local/bin:$PATH
+export PATH=/usr/local/opt:$PATH
 
 # I have language specific rc files (e.g. ~/.git-shellrc, ~/.node-shellrc, ~/.go-shellrc) where language specific configuration (and/or generate fns shell fns) exist
 for shellrc in $HOME/.*-shellrc; do
@@ -129,3 +129,6 @@ if command -v tmux &> /dev/null && [ -n "$PS1" ] && [[ ! "$TERM" =~ screen ]] &&
   exec tmux
 fi
 
+
+autoload -U +X bashcompinit && bashcompinit
+complete -o nospace -C /usr/local/bin/terraform terraform

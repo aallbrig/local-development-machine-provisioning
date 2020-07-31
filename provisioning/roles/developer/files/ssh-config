@@ -10,3 +10,7 @@ Host github.com
     PreferredAuthentications publickey
     IdentityFile ~/.ssh/id_rsa_work
 
+Host *amazonaws.com
+    IdentityFile ~/.ssh/andrew-allbright-keypair.pem
+    User ec2-user
+

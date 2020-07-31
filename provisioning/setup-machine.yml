@@ -10,7 +10,6 @@
     - developer
     - role: macbook
       when: ansible_distribution == 'MacOSX'
-    - ruby
     - node
     - artist
     - arduino-hacker

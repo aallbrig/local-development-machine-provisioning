@@ -92,6 +92,9 @@ brew "nmap"
 brew "httpie"
 brew "speedtest-cli"
 
+# payment processing platforms
+stripe/stripe-cli/stripe
+
 # testing
 cask "postman"
 

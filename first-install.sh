@@ -1,4 +1,6 @@
-function setup_osx {
+#!/bin/bash
+
+setup_osx() {
   echo "OSX detected!"
 
   # Python package manager is used to install ansible
@@ -30,7 +32,7 @@ function setup_osx {
   exit 0
 }
 
-function setup_ubuntu {
+setup_ubuntu() {
   ansible --version
   if [[ $? != 0 ]] ; then
     echo "Ansible is not installed. Installing..."

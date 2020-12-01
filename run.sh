@@ -3,7 +3,7 @@ function setup_osx {
 
   # homebrew "meta" role requires sudo pass
   # More info: https://github.com/geerlingguy/ansible-role-homebrew/issues/73
-  ansible-playbook provisioning/setup-machine.yml -K -vv
+  ansible-playbook setup-scripts/setup-machine.yml -K -vv
 
   exit 0
 }

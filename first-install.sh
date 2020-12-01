@@ -30,10 +30,10 @@ function setup_osx {
       fi
     fi
   fi
-  ansible-galaxy install -r provisioning/requirements.yml
+  ansible-galaxy install -r setup-scripts/requirements.yml
   if [[ $? != 0 ]] ; then
-    echo "Sudoing ansible-galaxy install -r provisioning/requirements.yml"
-    sudo ansible-galaxy install -r provisioning/requirements.yml
+    echo "Sudoing ansible-galaxy install -r setup-scripts/requirements.yml"
+    sudo ansible-galaxy install -r setup-scripts/requirements.yml
   fi
 
   exit 0

@@ -1,7 +1,7 @@
 function setup_osx {
   echo "OSX detected!"
 
-  # Ansible is built on top of python. PIP is used to install the bin file
+  # Python package manager is used to install ansible
   pip --version
   if [[ $? != 0 ]] ; then
     echo "No valid pip installed.  Installing..."
@@ -22,19 +22,22 @@ function setup_osx {
     echo "No valid ansible installed.  Installing..."
     pip install ansible
     if [[ $? != 0 ]] ; then
-      echo "Pip requires sudo?"
-      sudo pip install ansible
-      if [[ $? != 0 ]] ; then
-        echo "Could not install ansible.  Not sure why... See if google knows?"
-        exit 1
-      fi
+      echo "Ansible could not be installed using pip. Consult a search engine"
     fi
   fi
   ansible-galaxy install -r setup-scripts/requirements.yml
+
+  exit 0
+}
+
+function setup_ubuntu {
+  ansible --version
   if [[ $? != 0 ]] ; then
-    echo "Sudoing ansible-galaxy install -r setup-scripts/requirements.yml"
-    sudo ansible-galaxy install -r setup-scripts/requirements.yml
+    echo "Ansible is not installed. Installing..."
+    sudo apt install ansible
   fi
+
+  ansible-galaxy install -r setup-scripts/requirements.yml
 
   exit 0
 }
@@ -42,7 +45,9 @@ function setup_osx {
 case "$OSTYPE" in
   solaris*) echo "SOLARIS" ;;
   darwin*) setup_osx ;;
-  linux*) echo "LINUX" ;;
+  # Right now, I'm hard coding the assumption linux = ubuntu
+  # TODO: Update this to support more linux distros
+  linux*) setup_ubuntu ;;
   bsd*) echo "BSD" ;;
   msys*) echo "windows" ;;
   *) echo "unknown: $OSTYPE" ;;

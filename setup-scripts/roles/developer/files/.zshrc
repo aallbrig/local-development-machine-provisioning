@@ -109,7 +109,9 @@ function available_generator_functions() {
 alias agf='available_generator_functions'
 
 # autocompletion
-source /usr/local/share/zsh/site-functions/aws_zsh_completer.sh
+if test -f /usr/local/share/zsh/site-functions/aws_zsh_completer.sh; then
+  source /usr/local/share/zsh/site-functions/aws_zsh_completer.sh
+fi
 source <(kubectl completion zsh)
 complete -F __start_kubectl k # get k8s autocompletion working with "k" alias
 

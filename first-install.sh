@@ -45,8 +45,8 @@ function setup_ubuntu {
 case "$OSTYPE" in
   solaris*) echo "SOLARIS" ;;
   darwin*) setup_osx ;;
-  # Right now, I'm hard coding the assumption linux = ubuntu
-  # TODO: Update this to support more linux distros
+  # Hard coding assumption that linux = ubuntu
+  # TODO: Update to support more linux distros
   linux*) setup_ubuntu ;;
   bsd*) echo "BSD" ;;
   msys*) echo "windows" ;;

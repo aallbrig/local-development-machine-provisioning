@@ -65,3 +65,4 @@
       echo 'Not running this command on master'; \
     fi \
   "
+

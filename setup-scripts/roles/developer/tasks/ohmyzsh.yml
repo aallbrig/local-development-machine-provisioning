@@ -3,8 +3,8 @@
   apt: name={{ item }} state=latest update_cache=yes
   with_items:
    - git
-   - zsh
    - git-core
+   - zsh
   become: True
   when: ansible_distribution == 'Ubuntu'
 

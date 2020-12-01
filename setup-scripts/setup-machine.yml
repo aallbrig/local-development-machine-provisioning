@@ -5,12 +5,15 @@
     - developer-machine
 
   roles:
-    - brewfile
-    - geerlingguy.homebrew
+    - role: brewfile
+      when: ansible_distribution == 'MacOSX'
+    - role: geerlingguy.homebrew
+      when: ansible_distribution == 'MacOSX'
     - developer
     - role: macbook
       when: ansible_distribution == 'MacOSX'
     - node
-    - artist
+    - role: artist
+      when: ansible_distribution == 'MacOSX'
     - arduino-hacker
 

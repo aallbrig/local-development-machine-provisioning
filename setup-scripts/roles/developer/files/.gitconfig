@@ -16,6 +16,8 @@
   aa = add .
   r = reset
   cmt = commit -m
+  default-branch = !git symbolic-ref refs/remotes/origin/HEAD | sed 's@^refs/remotes/origin/@@'
+  dbr = default-branch
   d = diff
   dc = diff --cached
   diff-master = !git diff master..$(git branch-name)
@@ -42,27 +44,29 @@
   prune-local-branches-execute = remote prune origin
   merge-branch = "! \
     current_branch=$(git branch-name); \
-    if [ \"${current_branch}\" != 'master' ]; then \
+    default_branch=$(git default-branch); \
+    if [ \"${current_branch}\" != \"${default_branch}\" ]; then \
       echo 'Merging branch with master'; \
-      git checkout master; \
+      git checkout \"${default_branch}\"; \
       git merge \"${current_branch}\"; \
       echo 'Pushing up merge to origin'; \
       git push; \
       git checkout \"${current_branch}\"; \
     else \
-      echo 'Not running this command on master'; \
+      echo 'Not running this command on the default branch'; \
     fi \
   "
   full-delete-current-branch = "! \
     current_branch=$(git branch-name); \
-    if [ \"${current_branch}\" != 'master' ]; then \
+    default_branch=$(git default-branch); \
+    if [ \"${current_branch}\" != \"${default_branch}\" ]; then \
       echo 'Deleting branch'; \
-      git checkout master; \
+      git merge \"${current_branch}\"; \
       echo 'Pushing delete to origin'; \
       git push origin :\"${current_branch}\"; \
       git branch -D \"${current_branch}\"; \
     else \
-      echo 'Not running this command on master'; \
+      echo 'Not running this command on the default branch'; \
     fi \
   "
 

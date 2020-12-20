@@ -9,6 +9,8 @@
       when: ansible_distribution == 'MacOSX'
     - role: geerlingguy.homebrew
       when: ansible_distribution == 'MacOSX'
+    - role: chocolatey
+      when: ansible_distribution == 'Windows'
     - developer
     - role: macbook
       when: ansible_distribution == 'MacOSX'

@@ -44,6 +44,21 @@ setup_ubuntu() {
   exit 0
 }
 
+setup_windows() {
+  ansible --version
+  if [[ $? != 0 ]] ; then
+    echo "No valid ansible installed.  Installing..."
+    pip install ansible
+    if [[ $? != 0 ]] ; then
+      echo "Ansible could not be installed using pip. Consult a search engine"
+    fi
+  fi
+
+  ansible-galaxy install -r setup-scripts/requirements.yml
+
+  exit 0
+}
+
 case "$OSTYPE" in
   solaris*) echo "SOLARIS" ;;
   darwin*) setup_osx ;;
@@ -51,6 +66,6 @@ case "$OSTYPE" in
   # TODO: Update to support more linux distros
   linux*) setup_ubuntu ;;
   bsd*) echo "BSD" ;;
-  msys*) echo "windows" ;;
+  msys*) setup_windows ;;
   *) echo "unknown: $OSTYPE" ;;
 esac

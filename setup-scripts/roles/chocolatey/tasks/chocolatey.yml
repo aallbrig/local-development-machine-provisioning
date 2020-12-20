@@ -1,0 +1,12 @@
+---
+- name: Install multiple packages
+  win_chocolatey:
+    name:
+      - git
+      - jetbrainstoolbox
+      - python
+      - adobe-creative-cloud
+      - steam
+      - battle.net
+      - firefox
+    state: present

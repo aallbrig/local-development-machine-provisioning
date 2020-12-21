@@ -2,11 +2,18 @@
 - name: Install multiple packages
   win_chocolatey:
     name:
+      # General user
+      - firefox
+      - chrome
+      # Developer
       - git
       - jetbrainstoolbox
       - python
+      - go
+      # Artist
+      - unity-hub
       - adobe-creative-cloud
+      # Gamer
       - steam
       - battle.net
-      - firefox
     state: present
